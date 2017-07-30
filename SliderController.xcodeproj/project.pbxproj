@@ -141,11 +141,11 @@
 			isa = PBXGroup;
 			children = (
 				4E3967581F2E57E800FA3B40 /* Example */,
+				293AA02FC344C02F89D31F43 /* Frameworks */,
+				1C50BFD3419775996D504CA8 /* Pods */,
 				4EF2AD231F2E51C300666035 /* Products */,
 				4EF2AD241F2E51C300666035 /* Source */,
 				4EF2AD2F1F2E51C300666035 /* Tests */,
-				1C50BFD3419775996D504CA8 /* Pods */,
-				293AA02FC344C02F89D31F43 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,8 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				4E3967311F2E54AB00FA3B40 /* Info.plist */,
-				4E3967321F2E54AB00FA3B40 /* SliderController.h */,
 				4ECA07D81F2E5D5E0024BD0D /* Slider.swift */,
+				4E3967321F2E54AB00FA3B40 /* SliderController.h */,
 				4ECA07DA1F2E5EBA0024BD0D /* SliderController.swift */,
 			);
 			path = Source;
