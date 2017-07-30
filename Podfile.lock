@@ -1,3 +1,16 @@
-PODFILE CHECKSUM: f9b2e2ed19ab37a32be4cf833cc155ac5ff0ae4b
+PODS:
+  - SliderController (1.0)
+
+DEPENDENCIES:
+  - SliderController (from `./`)
+
+EXTERNAL SOURCES:
+  SliderController:
+    :path: "./"
+
+SPEC CHECKSUMS:
+  SliderController: cb6b89e10b3a3dd08d324b8da8137935756ebd1f
+
+PODFILE CHECKSUM: b107c997469b86218feea8bd49ce054dc2b5d759
 
 COCOAPODS: 1.2.1
