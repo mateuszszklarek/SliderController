@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E3967341F2E54AB00FA3B40 /* SliderController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E3967321F2E54AB00FA3B40 /* SliderController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4E3967391F2E54E000FA3B40 /* SliderControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3967361F2E54D200FA3B40 /* SliderControllerTests.swift */; };
 		4EF2AD2C1F2E51C300666035 /* SliderController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF2AD221F2E51C300666035 /* SliderController.framework */; };
-		4EF2AD311F2E51C300666035 /* SliderControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF2AD301F2E51C300666035 /* SliderControllerTests.swift */; };
-		4EF2AD331F2E51C300666035 /* SliderController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EF2AD251F2E51C300666035 /* SliderController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +23,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E3967311F2E54AB00FA3B40 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = SOURCE_ROOT; };
+		4E3967321F2E54AB00FA3B40 /* SliderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SliderController.h; path = Source/SliderController.h; sourceTree = SOURCE_ROOT; };
+		4E3967351F2E54D200FA3B40 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/Info.plist; sourceTree = SOURCE_ROOT; };
+		4E3967361F2E54D200FA3B40 /* SliderControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SliderControllerTests.swift; path = Tests/SliderControllerTests.swift; sourceTree = SOURCE_ROOT; };
 		4EF2AD221F2E51C300666035 /* SliderController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SliderController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4EF2AD251F2E51C300666035 /* SliderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SliderController.h; sourceTree = "<group>"; };
-		4EF2AD261F2E51C300666035 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EF2AD2B1F2E51C300666035 /* SliderControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SliderControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4EF2AD301F2E51C300666035 /* SliderControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderControllerTests.swift; sourceTree = "<group>"; };
-		4EF2AD321F2E51C300666035 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +53,8 @@
 		4EF2AD181F2E51C300666035 = {
 			isa = PBXGroup;
 			children = (
-				4EF2AD241F2E51C300666035 /* SliderController */,
-				4EF2AD2F1F2E51C300666035 /* SliderControllerTests */,
+				4EF2AD241F2E51C300666035 /* Source */,
+				4EF2AD2F1F2E51C300666035 /* Tests */,
 				4EF2AD231F2E51C300666035 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,22 +68,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4EF2AD241F2E51C300666035 /* SliderController */ = {
+		4EF2AD241F2E51C300666035 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				4EF2AD251F2E51C300666035 /* SliderController.h */,
-				4EF2AD261F2E51C300666035 /* Info.plist */,
+				4E3967311F2E54AB00FA3B40 /* Info.plist */,
+				4E3967321F2E54AB00FA3B40 /* SliderController.h */,
 			);
-			path = SliderController;
+			path = Source;
 			sourceTree = "<group>";
 		};
-		4EF2AD2F1F2E51C300666035 /* SliderControllerTests */ = {
+		4EF2AD2F1F2E51C300666035 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				4EF2AD301F2E51C300666035 /* SliderControllerTests.swift */,
-				4EF2AD321F2E51C300666035 /* Info.plist */,
+				4E3967351F2E54D200FA3B40 /* Info.plist */,
+				4E3967361F2E54D200FA3B40 /* SliderControllerTests.swift */,
 			);
-			path = SliderControllerTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -93,7 +93,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EF2AD331F2E51C300666035 /* SliderController.h in Headers */,
+				4E3967341F2E54AB00FA3B40 /* SliderController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +148,7 @@
 				TargetAttributes = {
 					4EF2AD211F2E51C300666035 = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					4EF2AD2A1F2E51C300666035 = {
@@ -203,7 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EF2AD311F2E51C300666035 /* SliderControllerTests.swift in Sources */,
+				4E3967391F2E54E000FA3B40 /* SliderControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,7 +328,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SliderController/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mateusz.szklarek.SliderController;
@@ -345,7 +346,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SliderController/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mateusz.szklarek.SliderController;
@@ -358,7 +359,7 @@
 		4EF2AD3A1F2E51C300666035 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = SliderControllerTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mateusz.szklarek.SliderControllerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -369,7 +370,7 @@
 		4EF2AD3B1F2E51C300666035 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = SliderControllerTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mateusz.szklarek.SliderControllerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
