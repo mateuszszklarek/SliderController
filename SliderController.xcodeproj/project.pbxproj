@@ -14,6 +14,7 @@
 		4E3967611F2E57E800FA3B40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E3967601F2E57E800FA3B40 /* Assets.xcassets */; };
 		4E3967641F2E57E800FA3B40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3967621F2E57E800FA3B40 /* LaunchScreen.storyboard */; };
 		4ECA07D91F2E5D5E0024BD0D /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECA07D81F2E5D5E0024BD0D /* Slider.swift */; };
+		4ECA07DB1F2E5EBA0024BD0D /* SliderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECA07DA1F2E5EBA0024BD0D /* SliderController.swift */; };
 		4EF2AD2C1F2E51C300666035 /* SliderController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF2AD221F2E51C300666035 /* SliderController.framework */; };
 		7982B605BB0D91C91E139D4C /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6C6C0E370528C067A9773A /* Pods_Example.framework */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		4E3967631F2E57E800FA3B40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E3967651F2E57E800FA3B40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4ECA07D81F2E5D5E0024BD0D /* Slider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
+		4ECA07DA1F2E5EBA0024BD0D /* SliderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderController.swift; sourceTree = "<group>"; };
 		4EF2AD221F2E51C300666035 /* SliderController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SliderController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EF2AD2B1F2E51C300666035 /* SliderControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SliderControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5381CC84CA9AA431E08FAB15 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				4E3967311F2E54AB00FA3B40 /* Info.plist */,
 				4E3967321F2E54AB00FA3B40 /* SliderController.h */,
 				4ECA07D81F2E5D5E0024BD0D /* Slider.swift */,
+				4ECA07DA1F2E5EBA0024BD0D /* SliderController.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ECA07DB1F2E5EBA0024BD0D /* SliderController.swift in Sources */,
 				4ECA07D91F2E5D5E0024BD0D /* Slider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
