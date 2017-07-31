@@ -1,3 +1,10 @@
+public protocol SliderControllerDelegate: class {
+    func sliderDidTap(atValue value: Float)
+    func sliderValueDidChange(value: Float)
+    func sliderDidStartSwiping()
+    func sliderDidEndSwiping()
+}
+
 final public class SliderController: UIViewController {
 
     override public func loadView() {
