@@ -15,7 +15,7 @@ final public class SliderController: UIViewController {
 
     // MARK: Subviews
 
-    private let slider: Slider = Slider(frame: .zero)
+    private(set) lazy var slider: Slider = Slider(frame: .zero)
 
     private func addSubviews() {
         view.addSubview(slider)
