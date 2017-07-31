@@ -164,11 +164,11 @@
 		4EF2AD241F2E51C300666035 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				4E82CC131F2FCDEF00C088E8 /* CGContext+AddCircle.swift */,
 				4E3967311F2E54AB00FA3B40 /* Info.plist */,
 				4ECA07D81F2E5D5E0024BD0D /* Slider.swift */,
 				4E3967321F2E54AB00FA3B40 /* SliderController.h */,
 				4ECA07DA1F2E5EBA0024BD0D /* SliderController.swift */,
-				4E82CC131F2FCDEF00C088E8 /* CGContext+AddCircle.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
