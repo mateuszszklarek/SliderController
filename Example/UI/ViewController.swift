@@ -1,7 +1,7 @@
 import UIKit
 import SliderController
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SliderControllerDelegate {
 
     override func loadView() {
         view = UIView(frame: .zero)
@@ -9,7 +9,31 @@ class ViewController: UIViewController {
         embed(child: sliderController, in: view)
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        sliderController.delegate = self
+    }
+
     let sliderController = SliderController()
+
+    // MARK: SliderControllerDelegate
+
+    func sliderDidTap(atValue value: Float) {
+        print("Did tap at value: \(value)") // TODO: Implement UI
+    }
+
+    func sliderValueDidChange(value: Float) {
+        print("Slider value did change: \(value)") // TODO: Implement UI
+    }
+
+    func sliderDidStartSwiping() {
+        print("Slider did start swiping") // TODO: Implement UI
+    }
+
+    func sliderDidEndSwiping() {
+        print("Slider did end swiping") // TODO: Implement UI
+    }
 
 }
 
