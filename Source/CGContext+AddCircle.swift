@@ -1,4 +1,4 @@
-extension CGContext {
+internal extension CGContext {
 
     func addCircle(center: CGPoint, radius: CGFloat) {
         addArc(center: center,
