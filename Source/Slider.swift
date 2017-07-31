@@ -75,11 +75,7 @@ final internal class Slider: UISlider {
         anchors
             .map { circleCenter(anchor: $0, between: between) }
             .forEach { circleCenter in
-                context.addArc(center: circleCenter,
-                               radius: anchorRadius,
-                               startAngle: 0,
-                               endAngle: CGFloat(2 * Double.pi),
-                               clockwise: true)
+                context.addCircle(center: circleCenter, radius: anchorRadius)
                 context.setFillColor(color.cgColor)
                 context.fillPath()
             }

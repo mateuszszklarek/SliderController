@@ -13,6 +13,7 @@
 		4E39675C1F2E57E800FA3B40 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E39675B1F2E57E800FA3B40 /* ViewController.swift */; };
 		4E3967611F2E57E800FA3B40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E3967601F2E57E800FA3B40 /* Assets.xcassets */; };
 		4E3967641F2E57E800FA3B40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3967621F2E57E800FA3B40 /* LaunchScreen.storyboard */; };
+		4E82CC141F2FCDEF00C088E8 /* CGContext+AddCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E82CC131F2FCDEF00C088E8 /* CGContext+AddCircle.swift */; };
 		4ECA07D91F2E5D5E0024BD0D /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECA07D81F2E5D5E0024BD0D /* Slider.swift */; };
 		4ECA07DB1F2E5EBA0024BD0D /* SliderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECA07DA1F2E5EBA0024BD0D /* SliderController.swift */; };
 		4EF2AD2C1F2E51C300666035 /* SliderController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF2AD221F2E51C300666035 /* SliderController.framework */; };
@@ -42,6 +43,7 @@
 		4E3967601F2E57E800FA3B40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E3967631F2E57E800FA3B40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E3967651F2E57E800FA3B40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E82CC131F2FCDEF00C088E8 /* CGContext+AddCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGContext+AddCircle.swift"; sourceTree = "<group>"; };
 		4ECA07D81F2E5D5E0024BD0D /* Slider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		4ECA07DA1F2E5EBA0024BD0D /* SliderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderController.swift; sourceTree = "<group>"; };
 		4EF2AD221F2E51C300666035 /* SliderController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SliderController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +168,7 @@
 				4ECA07D81F2E5D5E0024BD0D /* Slider.swift */,
 				4E3967321F2E54AB00FA3B40 /* SliderController.h */,
 				4ECA07DA1F2E5EBA0024BD0D /* SliderController.swift */,
+				4E82CC131F2FCDEF00C088E8 /* CGContext+AddCircle.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 			files = (
 				4ECA07DB1F2E5EBA0024BD0D /* SliderController.swift in Sources */,
 				4ECA07D91F2E5D5E0024BD0D /* Slider.swift in Sources */,
+				4E82CC141F2FCDEF00C088E8 /* CGContext+AddCircle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
