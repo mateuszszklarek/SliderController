@@ -45,7 +45,9 @@ final internal class Slider: UISlider {
             UIGraphicsEndImageContext()
         }
 
-        let context = UIGraphicsGetCurrentContext()
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
 
         drawLine(inContext: context, between: (startX, endX), color: color)
         drawCircles(inContext: context, between: (startX, endX), color: color)
@@ -54,20 +56,20 @@ final internal class Slider: UISlider {
             .resizableImage(withCapInsets: .zero)
     }
 
-    private func drawLine(inContext context: CGContext?,
+    private func drawLine(inContext context: CGContext,
                           between: (startX: CGFloat, endX: CGFloat),
                           color: UIColor) {
         let startLinePoint = CGPoint(x: between.startX, y: frame.height / 2)
         let endLinePoint = CGPoint(x: between.endX, y: frame.height / 2)
 
-        context?.addLines(between: [startLinePoint, endLinePoint])
-        context?.setLineWidth(trackHeight)
-        context?.setLineCap(.round)
-        context?.setStrokeColor(color.cgColor)
-        context?.strokePath()
+        context.addLines(between: [startLinePoint, endLinePoint])
+        context.setLineWidth(trackHeight)
+        context.setLineCap(.round)
+        context.setStrokeColor(color.cgColor)
+        context.strokePath()
     }
 
-    private func drawCircles(inContext context: CGContext?,
+    private func drawCircles(inContext context: CGContext,
                              between: (startX: CGFloat, endX: CGFloat),
                              color: UIColor) {
         anchors.forEach { anchor in
@@ -76,13 +78,13 @@ final internal class Slider: UISlider {
             let y = frame.height / 2
             let circleCenter = CGPoint(x: x, y: y)
 
-            context?.addArc(center: circleCenter,
+            context.addArc(center: circleCenter,
                             radius: anchorRadius,
                             startAngle: 0,
                             endAngle: CGFloat(2 * Double.pi),
                             clockwise: true)
-            context?.setFillColor(color.cgColor)
-            context?.fillPath()
+            context.setFillColor(color.cgColor)
+            context.fillPath()
         }
     }
 
