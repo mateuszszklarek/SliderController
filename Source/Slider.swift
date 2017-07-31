@@ -40,14 +40,15 @@ final internal class Slider: UISlider {
         let endX: CGFloat = frame.size.width - offset * 1.3
 
         UIGraphicsBeginImageContextWithOptions(frame.size, false, 0)
-        let context = UIGraphicsGetCurrentContext()
-
-        drawLine(inContext: context, between: (startX, endX), color: color)
-        drawCircles(inContext: context, between: (startX, endX), color: color)
 
         defer {
             UIGraphicsEndImageContext()
         }
+
+        let context = UIGraphicsGetCurrentContext()
+
+        drawLine(inContext: context, between: (startX, endX), color: color)
+        drawCircles(inContext: context, between: (startX, endX), color: color)
 
         return UIGraphicsGetImageFromCurrentImageContext()?
             .resizableImage(withCapInsets: .zero)
