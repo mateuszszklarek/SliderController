@@ -72,17 +72,17 @@ final internal class Slider: UISlider {
     private func drawCircles(inContext context: CGContext,
                              between: (startX: CGFloat, endX: CGFloat),
                              color: UIColor) {
-        anchors.forEach { anchor in
-            let circleCenter = self.circleCenter(anchor: anchor, between: between)
-
-            context.addArc(center: circleCenter,
-                            radius: anchorRadius,
-                            startAngle: 0,
-                            endAngle: CGFloat(2 * Double.pi),
-                            clockwise: true)
-            context.setFillColor(color.cgColor)
-            context.fillPath()
-        }
+        anchors
+            .map { circleCenter(anchor: $0, between: between) }
+            .forEach { circleCenter in
+                context.addArc(center: circleCenter,
+                               radius: anchorRadius,
+                               startAngle: 0,
+                               endAngle: CGFloat(2 * Double.pi),
+                               clockwise: true)
+                context.setFillColor(color.cgColor)
+                context.fillPath()
+            }
     }
 
     private func circleCenter(anchor: CGFloat, between: (startX: CGFloat, endX: CGFloat)) -> CGPoint {
