@@ -5,6 +5,17 @@ public protocol SliderControllerDelegate: class {
     func sliderDidEndSwiping()
 }
 
+public protocol SliderControlling: class {
+    func setSliderValue(_ value: Float)
+    var sliderValue: Float { get }
+    var trackHeight: CGFloat { get set }
+    var selectedTrackColor: UIColor { get set }
+    var unselectedTrackColor: UIColor { get set }
+    var isThumbHidden: Bool { get set }
+    var anchors: [CGFloat] { get set }
+    var anchorRadius: CGFloat { get set }
+}
+
 final public class SliderController: UIViewController {
 
     public weak var delegate: SliderControllerDelegate?
