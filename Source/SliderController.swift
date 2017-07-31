@@ -7,9 +7,9 @@ public protocol SliderControllerDelegate: class {
 
 final public class SliderController: UIViewController {
 
-    weak var delegate: SliderControllerDelegate?
+    public weak var delegate: SliderControllerDelegate?
 
-    override public func loadView() {
+    public override func loadView() {
         view = UIView(frame: .zero)
         addSubviews()
         setUpLayout()
