@@ -14,6 +14,8 @@ final public class SliderController: UIViewController {
         view.addSubview(slider)
     }
 
+    // MARK: Layout
+
     private func setUpLayout() {
         slider.translatesAutoresizingMaskIntoConstraints = false
         slider.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
