@@ -32,6 +32,63 @@ final public class SliderController: UIViewController {
         setUpSliderInteractions()
     }
 
+    // MARK: - SliderControlling
+
+    public func setSlider(value: Float, animated: Bool) {
+        slider.setValue(value, animated: animated)
+    }
+
+    public var sliderValue: Float {
+        return slider.value
+    }
+
+    public var trackHeight: CGFloat {
+        set {
+            slider.trackHeight = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.trackHeight }
+    }
+
+    public var selectedTrackColor: UIColor {
+        set {
+            slider.selectedTrackColor = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.selectedTrackColor }
+    }
+
+    public var unselectedTrackColor: UIColor {
+        set {
+            slider.unselectedTrackColor = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.unselectedTrackColor }
+    }
+
+    public var isThumbHidden: Bool {
+        set {
+            slider.isThumbHidden = newValue
+        }
+        get { return slider.isThumbHidden }
+    }
+
+    public var anchors: [CGFloat] {
+        set {
+            slider.anchors = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.anchors }
+    }
+
+    public var anchorRadius: CGFloat {
+        set {
+            slider.anchorRadius = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.anchorRadius }
+    }
+
     // MARK: - Interactions
 
     private func setUpSliderInteractions() {
