@@ -22,6 +22,7 @@ final public class SliderController: UIViewController {
 
     public override func loadView() {
         view = UIView(frame: .zero)
+
         addSubviews()
         setUpLayout()
     }
