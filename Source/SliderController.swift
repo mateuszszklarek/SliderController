@@ -6,6 +6,7 @@ public protocol SliderControllerDelegate: class {
 }
 
 public protocol SliderControlling: class {
+    weak var delegate: SliderControllerDelegate? { get set }
     func setSlider(value: Float, animated: Bool)
     var sliderValue: Float { get }
     var trackHeight: CGFloat { get set }
@@ -17,8 +18,6 @@ public protocol SliderControlling: class {
 }
 
 final public class SliderController: UIViewController {
-
-    public weak var delegate: SliderControllerDelegate?
 
     public override func loadView() {
         view = UIView(frame: .zero)
@@ -34,6 +33,8 @@ final public class SliderController: UIViewController {
     }
 
     // MARK: - SliderControlling
+
+    public weak var delegate: SliderControllerDelegate?
 
     public func setSlider(value: Float, animated: Bool) {
         slider.setValue(value, animated: animated)
