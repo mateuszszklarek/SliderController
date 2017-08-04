@@ -6,7 +6,7 @@ public protocol SliderControllerDelegate: class {
 }
 
 public protocol SliderControlling: class {
-    func setSlider(value: Float)
+    func setSlider(value: Float, animated: Bool)
     var sliderValue: Float { get }
     var trackHeight: CGFloat { get set }
     var selectedTrackColor: UIColor { get set }
