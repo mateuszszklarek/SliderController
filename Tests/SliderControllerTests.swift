@@ -1,6 +1,7 @@
 @testable import SliderController
 import XCTest
 import EarlGrey
+import EarlGreySnapshots
 
 class SliderControllerTests: XCTestCase {
 
@@ -83,6 +84,16 @@ class SliderControllerTests: XCTestCase {
         EarlGrey.select(elementWithMatcher: grey_kindOfClass(UISlider.self))
             .perform(grey_tapAtPoint(targetPoint))
             .assert(delegateSliderDidTapCall(atValue: 0.5))
+    }
+
+    // MARK: - UI + Snapshots
+
+    func testMoveSliderToValue0_7_5ShouldLooksProperly() {
+        let targetValue: Float = 0.75
+
+        EarlGrey.select(elementWithMatcher: grey_kindOfClass(UISlider.self))
+            .perform(grey_moveSliderToValue(targetValue))
+            .assert(grey_verifyDeviceAgnosticSnapshot())
     }
 
 }
