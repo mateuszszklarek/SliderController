@@ -12,6 +12,7 @@ class SliderControllerTests: XCTestCase {
         super.setUp()
 
         delegateSpy = SliderControllerDelegateSpy()
+
         sut = SliderController()
         sut.unselectedTrackColor = .blue
         sut.selectedTrackColor = .red
@@ -44,6 +45,14 @@ class SliderControllerTests: XCTestCase {
         EarlGrey.select(elementWithMatcher: grey_kindOfClass(UISlider.self))
             .perform(grey_moveSliderToValue(targetValue))
             .assert(grey_sliderValueMatcher(grey_equalTo(targetValue)))
+    }
+
+    func testMoveSliderToValue0_5ShouldInvokeDelegateMethodSliderValueDidChange() {
+        let targetValue: Float = 0.7
+
+        EarlGrey.select(elementWithMatcher: grey_kindOfClass(UISlider.self))
+            .perform(grey_moveSliderToValue(targetValue))
+            .assert(delegateSliderValueDidChangeCall(withValue: targetValue))
     }
 
 }
