@@ -31,6 +31,8 @@ class SliderControllerTests: XCTestCase {
         application = nil
     }
 
+    // MARK: - UI
+
     func testMoveSliderToValue0_5() {
         let targetValue: Float = 0.5
 
@@ -46,6 +48,8 @@ class SliderControllerTests: XCTestCase {
             .perform(grey_moveSliderToValue(targetValue))
             .assert(grey_sliderValueMatcher(grey_equalTo(targetValue)))
     }
+
+    // MARK: - Delegate function
 
     func testMoveSliderToValue0_7ShouldInvokeDelegateMethodSliderValueDidChange() {
         let targetValue: Float = 0.7
