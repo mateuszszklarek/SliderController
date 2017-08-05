@@ -12,7 +12,7 @@ extension SliderControllerTests {
                     errorOrNil?.pointee = NSError(domain: kGREYInteractionErrorDomain, code: 2, userInfo: errorInfo)
                 } else if self.delegateSpy.sliderValueDidChange.value != value {
                     let description = "sliderValueDidChange(value:) was called " +
-                    "with incorrect value: \(self.delegateSpy.sliderValueDidChange.value)"
+                                      "with incorrect value: \(self.delegateSpy.sliderValueDidChange.value)"
                     let errorInfo = [NSLocalizedDescriptionKey: description]
                     errorOrNil?.pointee = NSError(domain: kGREYInteractionErrorDomain, code: 2, userInfo: errorInfo)
                 }
