@@ -19,6 +19,7 @@
 		4EBECB131F35E846005C64BA /* EarlGrey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBECB121F35E846005C64BA /* EarlGrey.swift */; };
 		4EBECB171F35E8FC005C64BA /* EarlGrey.framework in EarlGrey Copy Files */ = {isa = PBXBuildFile; fileRef = 4EBECB101F35E80E005C64BA /* EarlGrey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		4EBECB191F35FF3C005C64BA /* SliderControllerDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBECB181F35FF3C005C64BA /* SliderControllerDelegateSpy.swift */; };
+		4EBECB1B1F36082C005C64BA /* SliderControllerTests+CustomAsserts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBECB1A1F36082C005C64BA /* SliderControllerTests+CustomAsserts.swift */; };
 		4ECA07D91F2E5D5E0024BD0D /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECA07D81F2E5D5E0024BD0D /* Slider.swift */; };
 		4ECA07DB1F2E5EBA0024BD0D /* SliderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECA07DA1F2E5EBA0024BD0D /* SliderController.swift */; };
 		4EF2AD2C1F2E51C300666035 /* SliderController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF2AD221F2E51C300666035 /* SliderController.framework */; };
@@ -74,6 +75,7 @@
 		4EBECB101F35E80E005C64BA /* EarlGrey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EarlGrey.framework; path = Pods/EarlGrey/EarlGrey/EarlGrey.framework; sourceTree = "<group>"; };
 		4EBECB121F35E846005C64BA /* EarlGrey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarlGrey.swift; sourceTree = "<group>"; };
 		4EBECB181F35FF3C005C64BA /* SliderControllerDelegateSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderControllerDelegateSpy.swift; sourceTree = "<group>"; };
+		4EBECB1A1F36082C005C64BA /* SliderControllerTests+CustomAsserts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SliderControllerTests+CustomAsserts.swift"; sourceTree = "<group>"; };
 		4ECA07D81F2E5D5E0024BD0D /* Slider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		4ECA07DA1F2E5EBA0024BD0D /* SliderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderController.swift; sourceTree = "<group>"; };
 		4EF2AD221F2E51C300666035 /* SliderController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SliderController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,6 +220,7 @@
 				4E3967361F2E54D200FA3B40 /* SliderControllerTests.swift */,
 				4EBECB121F35E846005C64BA /* EarlGrey.swift */,
 				4EBECB181F35FF3C005C64BA /* SliderControllerDelegateSpy.swift */,
+				4EBECB1A1F36082C005C64BA /* SliderControllerTests+CustomAsserts.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EBECB131F35E846005C64BA /* EarlGrey.swift in Sources */,
+				4EBECB1B1F36082C005C64BA /* SliderControllerTests+CustomAsserts.swift in Sources */,
 				4EBECB191F35FF3C005C64BA /* SliderControllerDelegateSpy.swift in Sources */,
 				4E3967391F2E54E000FA3B40 /* SliderControllerTests.swift in Sources */,
 			);
