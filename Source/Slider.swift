@@ -6,8 +6,7 @@ final internal class Slider: UISlider {
     var selectedTrackColor: UIColor = .blue
     var unselectedTrackColor: UIColor = .white
     var isThumbHidden: Bool = false
-
-    var anchors: [CGFloat] = [0, 0.25, 0.5, 0.75, 1.0]
+    var anchors: [CGFloat] = []
     var anchorRadius: CGFloat = 12
 
     // MARK: Overridden
