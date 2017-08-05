@@ -55,4 +55,13 @@ class SliderControllerTests: XCTestCase {
             .assert(delegateSliderValueDidChangeCall(withValue: targetValue))
     }
 
+    func testMoveSliderToValue0_8ShouldInvokeDelegateMethodDidStartSwipingAndDidEndSwiping() {
+        let targetValue: Float = 0.8
+
+        EarlGrey.select(elementWithMatcher: grey_kindOfClass(UISlider.self))
+            .perform(grey_moveSliderToValue(targetValue))
+            .assert(delegateSliderDidStartSwipingCall())
+            .assert(delegateSliderDidEndSwipingCall())
+    }
+
 }
