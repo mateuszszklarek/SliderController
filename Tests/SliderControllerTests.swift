@@ -47,7 +47,7 @@ class SliderControllerTests: XCTestCase {
             .assert(grey_sliderValueMatcher(grey_equalTo(targetValue)))
     }
 
-    func testMoveSliderToValue0_5ShouldInvokeDelegateMethodSliderValueDidChange() {
+    func testMoveSliderToValue0_7ShouldInvokeDelegateMethodSliderValueDidChange() {
         let targetValue: Float = 0.7
 
         EarlGrey.select(elementWithMatcher: grey_kindOfClass(UISlider.self))
