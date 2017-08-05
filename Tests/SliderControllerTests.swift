@@ -50,7 +50,7 @@ class SliderControllerTests: XCTestCase {
             .assert(grey_sliderValueMatcher(grey_equalTo(0.5)))
     }
 
-    // MARK: - Delegate function
+    // MARK: - Delegate functions
 
     func testMoveSliderToValue0_7ShouldInvokeDelegateMethodSliderValueDidChange() {
         let targetValue: Float = 0.7
