@@ -219,8 +219,8 @@
 				4EBECB121F35E846005C64BA /* EarlGrey.swift */,
 				4E3967351F2E54D200FA3B40 /* Info.plist */,
 				4EBECB181F35FF3C005C64BA /* SliderControllerDelegateSpy.swift */,
-				4E3967361F2E54D200FA3B40 /* SliderControllerTests.swift */,
 				4EBECB1A1F36082C005C64BA /* SliderControllerTests+CustomAsserts.swift */,
+				4E3967361F2E54D200FA3B40 /* SliderControllerTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
