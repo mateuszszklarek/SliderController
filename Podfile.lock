@@ -1,7 +1,9 @@
 PODS:
+  - EarlGrey (1.11.0)
   - SliderController (1.0)
 
 DEPENDENCIES:
+  - EarlGrey
   - SliderController (from `./`)
 
 EXTERNAL SOURCES:
@@ -9,8 +11,9 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
+  EarlGrey: 7515b05c7f448374ad7ca2c454f3ea566fcb1a2f
   SliderController: cb6b89e10b3a3dd08d324b8da8137935756ebd1f
 
-PODFILE CHECKSUM: b107c997469b86218feea8bd49ce054dc2b5d759
+PODFILE CHECKSUM: c2aaa5d38476dd04d9ba52d0b982961a572eb8a1
 
 COCOAPODS: 1.2.1

@@ -5,3 +5,7 @@ inhibit_all_warnings!
 target 'Example' do
   pod 'SliderController', :path => './'
 end
+
+target 'SliderControllerTests' do
+  pod 'EarlGrey', '~> 1.11'
+end
