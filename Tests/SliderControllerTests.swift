@@ -33,20 +33,21 @@ class SliderControllerTests: XCTestCase {
 
     // MARK: - UI
 
-    func testMoveSliderToValue0_5() {
-        let targetValue: Float = 0.5
+    func testMoveSliderToValue0_8() {
+        let targetValue: Float = 0.8
 
         EarlGrey.select(elementWithMatcher: grey_kindOfClass(UISlider.self))
             .perform(grey_moveSliderToValue(targetValue))
             .assert(grey_sliderValueMatcher(grey_equalTo(targetValue)))
     }
 
-    func testMoveSliderToValue1_0() {
-        let targetValue: Float = 1.0
+    func testTapOnSliderAtMiddlePoint() {
+        let fullWidth = sut.view.frame.width
+        let targetPoint = CGPoint(x: fullWidth / 2, y: 0)
 
         EarlGrey.select(elementWithMatcher: grey_kindOfClass(UISlider.self))
-            .perform(grey_moveSliderToValue(targetValue))
-            .assert(grey_sliderValueMatcher(grey_equalTo(targetValue)))
+            .perform(grey_tapAtPoint(targetPoint))
+            .assert(grey_sliderValueMatcher(grey_equalTo(0.5)))
     }
 
     // MARK: - Delegate function
