@@ -14,12 +14,6 @@ final internal class Slider: UISlider {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
 
-        guard let superview = superview else {
-            return
-        }
-
-        frame = superview.bounds
-
         let selectedTrackImage = drawImage(color: selectedTrackColor)
         let unselectedTrackImage = drawImage(color: unselectedTrackColor)
 
@@ -31,14 +25,12 @@ final internal class Slider: UISlider {
 
     // MARK: Private
 
-    private let minOffset: CGFloat = 10
-
     private func drawImage(color: UIColor) -> UIImage? {
-        let offset: CGFloat = max(minOffset, max(trackHeight / 2, anchorRadius))
-        let startX: CGFloat = frame.origin.x + offset
-        let endX: CGFloat = frame.size.width - offset * 1.3
+        let startX = frame.minX + abs(frame.minX)
+        let endX = frame.maxX - abs(frame.minX)
+        let size = CGSize(width: endX - startX, height: frame.height)
 
-        UIGraphicsBeginImageContextWithOptions(frame.size, false, 0)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
 
         defer {
             UIGraphicsEndImageContext()
@@ -48,7 +40,9 @@ final internal class Slider: UISlider {
             return nil
         }
 
-        drawLine(inContext: context, between: (startX, endX), color: color)
+        let offset = trackHeight / 2
+
+        drawLine(inContext: context, between: (startX + offset, endX - offset), color: color)
         drawCircles(inContext: context, between: (startX, endX), color: color)
 
         return UIGraphicsGetImageFromCurrentImageContext()?
@@ -82,7 +76,7 @@ final internal class Slider: UISlider {
 
     private func circleCenter(anchor: CGFloat, between: (startX: CGFloat, endX: CGFloat)) -> CGPoint {
         let pointX = anchor * frame.width
-        let x = max(between.startX, min(pointX, between.endX))
+        let x = max(between.startX + anchorRadius, min(pointX, between.endX - anchorRadius))
         let y = frame.height / 2
         return CGPoint(x: x, y: y)
     }
