@@ -69,4 +69,13 @@ class SliderControllerTests: XCTestCase {
             .assert(delegateSliderDidEndSwipingCall())
     }
 
+    func testTapOnSliderAtMiddlePointShouldInvokeDelegateMethodSliderDidTap() {
+        let fullWidth = sut.view.frame.width
+        let targetPoint = CGPoint(x: fullWidth / 2, y: 0)
+
+        EarlGrey.select(elementWithMatcher: grey_kindOfClass(UISlider.self))
+            .perform(grey_tapAtPoint(targetPoint))
+            .assert(delegateSliderDidTapCall(atValue: 0.5))
+    }
+
 }
