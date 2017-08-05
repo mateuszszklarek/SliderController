@@ -12,6 +12,8 @@ class SliderControllerTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
+        GREYTestHelper.enableFastAnimation()
+
         delegateSpy = SliderControllerDelegateSpy()
 
         sut = SliderController()
