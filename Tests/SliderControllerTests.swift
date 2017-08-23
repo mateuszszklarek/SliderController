@@ -35,26 +35,7 @@ class SliderControllerTests: XCTestCase {
         application = nil
     }
 
-    // MARK: - UI
-
-    func testMoveSliderToValue0_8() {
-        let targetValue: Float = 0.8
-
-        EarlGrey.select(elementWithMatcher: grey_kindOfClass(UISlider.self))
-            .perform(grey_moveSliderToValue(targetValue))
-            .assert(grey_sliderValueMatcher(grey_equalTo(targetValue)))
-    }
-
-    func testTapOnSliderAtMiddlePoint() {
-        let fullWidth = sut.view.frame.width
-        let targetPoint = CGPoint(x: fullWidth / 2, y: 0)
-
-        EarlGrey.select(elementWithMatcher: grey_kindOfClass(UISlider.self))
-            .perform(grey_tapAtPoint(targetPoint))
-            .assert(grey_sliderValueMatcher(grey_equalTo(0.5)))
-    }
-
-    // MARK: - Delegate functions
+    // MARK: - Delegate functions tests
 
     func testMoveSliderToValue0_7ShouldInvokeDelegateMethodSliderValueDidChange() {
         let targetValue: Float = 0.7
@@ -89,7 +70,26 @@ class SliderControllerTests: XCTestCase {
             .assert(delegateSliderDidTapCall(atValue: 0.5))
     }
 
-    // MARK: - UI + Snapshots
+    // MARK: - UI tests
+
+    func testMoveSliderToValue0_8() {
+        let targetValue: Float = 0.8
+
+        EarlGrey.select(elementWithMatcher: grey_kindOfClass(UISlider.self))
+            .perform(grey_moveSliderToValue(targetValue))
+            .assert(grey_sliderValueMatcher(grey_equalTo(targetValue)))
+    }
+
+    func testTapOnSliderAtMiddlePoint() {
+        let fullWidth = sut.view.frame.width
+        let targetPoint = CGPoint(x: fullWidth / 2, y: 0)
+
+        EarlGrey.select(elementWithMatcher: grey_kindOfClass(UISlider.self))
+            .perform(grey_tapAtPoint(targetPoint))
+            .assert(grey_sliderValueMatcher(grey_equalTo(0.5)))
+    }
+
+    // MARK: - UI + snapshots tests
 
     func testMoveSliderToValue0_7_5ShouldLooksProperly() {
         let targetValue: Float = 0.75
