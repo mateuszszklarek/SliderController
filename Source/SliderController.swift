@@ -17,7 +17,7 @@ public protocol SliderControlling: class {
     var anchorRadius: CGFloat { get set }
 }
 
-final public class SliderController: UIViewController {
+final public class SliderController: UIViewController, SliderControlling {
 
     public override func loadView() {
         view = UIView(frame: .zero)
