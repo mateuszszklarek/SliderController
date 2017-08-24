@@ -96,12 +96,12 @@ final public class SliderController: UIViewController, SliderControlling {
 
     public var minimumValue: Float {
         set { slider.minimumValue = newValue }
-        get { slider.minimumValue }
+        get { return slider.minimumValue }
     }
 
     public var maximumValue: Float {
         set { slider.maximumValue = newValue }
-        get { slider.maximumValue }
+        get { return slider.maximumValue }
     }
 
     public var controller: UIViewController {
