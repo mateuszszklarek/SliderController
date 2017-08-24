@@ -15,6 +15,8 @@ public protocol SliderControlling: class {
     var isThumbHidden: Bool { get set }
     var anchors: [CGFloat] { get set }
     var anchorRadius: CGFloat { get set }
+    var minimumValue: Float { get set }
+    var maximumValue: Float { get set }
     var controller: UIViewController { get }
 }
 
@@ -90,6 +92,16 @@ final public class SliderController: UIViewController, SliderControlling {
             slider.setNeedsDisplay()
         }
         get { return slider.anchorRadius }
+    }
+
+    public var minimumValue: Float {
+        set { slider.minimumValue = newValue }
+        get { slider.minimumValue }
+    }
+
+    public var maximumValue: Float {
+        set { slider.maximumValue = newValue }
+        get { slider.maximumValue }
     }
 
     public var controller: UIViewController {
