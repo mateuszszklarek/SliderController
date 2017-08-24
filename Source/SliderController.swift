@@ -15,6 +15,7 @@ public protocol SliderControlling: class {
     var isThumbHidden: Bool { get set }
     var anchors: [CGFloat] { get set }
     var anchorRadius: CGFloat { get set }
+    var controller: UIViewController { get }
 }
 
 final public class SliderController: UIViewController, SliderControlling {
@@ -89,6 +90,10 @@ final public class SliderController: UIViewController, SliderControlling {
             slider.setNeedsDisplay()
         }
         get { return slider.anchorRadius }
+    }
+
+    public var controller: UIViewController {
+        return self
     }
 
     // MARK: - Interactions

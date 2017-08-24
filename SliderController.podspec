@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'SliderController'
-  s.version      = '1.0.2'
+  s.version      = '1.0.3'
   s.summary      = 'Customized UISlider subclass managed by SliderController'
   s.homepage     = 'https://github.com/mateuszszklarek/SliderController.git'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
