@@ -12,8 +12,10 @@ class ViewController: UIViewController, SliderControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        sliderController.unselectedTrackColor = .red
+        sliderController.unselectedTrackColor = UIColor.red.withAlphaComponent(0.5)
         sliderController.selectedTrackColor = .green
+        sliderController.unselectedAnchorColor = .red
+        sliderController.selectedAnchorColor = .green
         sliderController.isThumbHidden = true
         sliderController.anchors = [0, 0.3, 0.8, 1.0]
         sliderController.anchorRadius = 15
