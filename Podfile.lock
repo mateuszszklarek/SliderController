@@ -8,7 +8,7 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - SliderController (1.0.4)
+  - SliderController (1.0.5)
 
 DEPENDENCIES:
   - EarlGrey (~> 1.11)
@@ -23,7 +23,7 @@ SPEC CHECKSUMS:
   EarlGrey: 7515b05c7f448374ad7ca2c454f3ea566fcb1a2f
   EarlGreySnapshots: ce423ad576f1bae4315cd9ca313175d5d99be065
   FBSnapshotTestCase: '094f9f314decbabe373b87cc339bea235a63e07a'
-  SliderController: 891ef754bed90f0cbd97ec414a7ea88acb9cfaaa
+  SliderController: e58f5c9889c1d8527aef1c6b1a6613316c5cfd19
 
 PODFILE CHECKSUM: f435f57544995ae8f8403d5afa9c35c744338669
 
