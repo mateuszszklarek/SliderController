@@ -12,6 +12,8 @@ public protocol SliderControlling: class {
     var trackHeight: CGFloat { get set }
     var selectedTrackColor: UIColor { get set }
     var unselectedTrackColor: UIColor { get set }
+    var selectedAnchorColor: UIColor { get set }
+    var unselectedAnchorColor: UIColor { get set }
     var isThumbHidden: Bool { get set }
     var anchors: [CGFloat] { get set }
     var anchorRadius: CGFloat { get set }
@@ -69,6 +71,22 @@ final public class SliderController: UIViewController, SliderControlling {
             slider.setNeedsDisplay()
         }
         get { return slider.unselectedTrackColor }
+    }
+
+    public var selectedAnchorColor: UIColor {
+        set {
+            slider.selectedAnchorColor = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.selectedAnchorColor }
+    }
+
+    public var unselectedAnchorColor: UIColor {
+        set {
+            slider.unselectedAnchorColor = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.unselectedAnchorColor }
     }
 
     public var isThumbHidden: Bool {

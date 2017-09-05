@@ -5,6 +5,8 @@ final internal class Slider: UISlider {
     var trackHeight: CGFloat = 10
     var selectedTrackColor: UIColor = .blue
     var unselectedTrackColor: UIColor = .white
+    var selectedAnchorColor: UIColor = .blue
+    var unselectedAnchorColor: UIColor = .white
     var isThumbHidden: Bool = false
     var anchors: [CGFloat] = []
     var anchorRadius: CGFloat = 12
@@ -14,8 +16,8 @@ final internal class Slider: UISlider {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
 
-        let selectedTrackImage = drawImage(color: selectedTrackColor)
-        let unselectedTrackImage = drawImage(color: unselectedTrackColor)
+        let selectedTrackImage = drawImage(trackColor: selectedTrackColor, anchorColor: selectedAnchorColor)
+        let unselectedTrackImage = drawImage(trackColor: unselectedTrackColor, anchorColor: unselectedAnchorColor)
 
         setMinimumTrackImage(selectedTrackImage, for: .normal)
         setMaximumTrackImage(unselectedTrackImage, for: .normal)
@@ -25,7 +27,7 @@ final internal class Slider: UISlider {
 
     // MARK: Private
 
-    private func drawImage(color: UIColor) -> UIImage? {
+    private func drawImage(trackColor: UIColor, anchorColor: UIColor) -> UIImage? {
         let startX = frame.minX + abs(frame.minX)
         let endX = frame.maxX - abs(frame.minX)
         let size = CGSize(width: endX - startX, height: frame.height)
@@ -42,8 +44,8 @@ final internal class Slider: UISlider {
 
         let offset = trackHeight / 2
 
-        drawLine(inContext: context, between: (startX + offset, endX - offset), color: color)
-        drawCircles(inContext: context, between: (startX, endX), color: color)
+        drawLine(inContext: context, between: (startX + offset, endX - offset), color: trackColor)
+        drawCircles(inContext: context, between: (startX, endX), color: anchorColor)
 
         return UIGraphicsGetImageFromCurrentImageContext()?
             .resizableImage(withCapInsets: .zero)
