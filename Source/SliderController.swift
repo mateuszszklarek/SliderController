@@ -12,12 +12,17 @@ public protocol SliderControlling: class {
     var trackHeight: CGFloat { get set }
     var selectedTrackColor: UIColor { get set }
     var unselectedTrackColor: UIColor { get set }
+    var selectedAnchorColor: UIColor { get set }
+    var unselectedAnchorColor: UIColor { get set }
     var isThumbHidden: Bool { get set }
     var anchors: [CGFloat] { get set }
     var anchorRadius: CGFloat { get set }
+    var minimumValue: Float { get set }
+    var maximumValue: Float { get set }
+    var controller: UIViewController { get }
 }
 
-final public class SliderController: UIViewController {
+final public class SliderController: UIViewController, SliderControlling {
 
     public override func loadView() {
         view = UIView(frame: .zero)
@@ -68,6 +73,22 @@ final public class SliderController: UIViewController {
         get { return slider.unselectedTrackColor }
     }
 
+    public var selectedAnchorColor: UIColor {
+        set {
+            slider.selectedAnchorColor = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.selectedAnchorColor }
+    }
+
+    public var unselectedAnchorColor: UIColor {
+        set {
+            slider.unselectedAnchorColor = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.unselectedAnchorColor }
+    }
+
     public var isThumbHidden: Bool {
         set {
             slider.isThumbHidden = newValue
@@ -89,6 +110,20 @@ final public class SliderController: UIViewController {
             slider.setNeedsDisplay()
         }
         get { return slider.anchorRadius }
+    }
+
+    public var minimumValue: Float {
+        set { slider.minimumValue = newValue }
+        get { return slider.minimumValue }
+    }
+
+    public var maximumValue: Float {
+        set { slider.maximumValue = newValue }
+        get { return slider.maximumValue }
+    }
+
+    public var controller: UIViewController {
+        return self
     }
 
     // MARK: - Interactions

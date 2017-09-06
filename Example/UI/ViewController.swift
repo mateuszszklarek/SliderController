@@ -6,14 +6,16 @@ class ViewController: UIViewController, SliderControllerDelegate {
     override func loadView() {
         view = UIView(frame: .zero)
         view.backgroundColor = .white
-        embed(child: sliderController, in: view)
+        embed(child: sliderController.controller, in: view)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        sliderController.unselectedTrackColor = .red
+        sliderController.unselectedTrackColor = UIColor.red.withAlphaComponent(0.5)
         sliderController.selectedTrackColor = .green
+        sliderController.unselectedAnchorColor = .red
+        sliderController.selectedAnchorColor = .green
         sliderController.isThumbHidden = true
         sliderController.anchors = [0, 0.3, 0.6, 1.0]
         sliderController.anchorRadius = 15
@@ -21,7 +23,7 @@ class ViewController: UIViewController, SliderControllerDelegate {
         sliderController.delegate = self
     }
 
-    let sliderController = SliderController()
+    let sliderController: SliderControlling = SliderController()
 
     // MARK: SliderControllerDelegate
 
