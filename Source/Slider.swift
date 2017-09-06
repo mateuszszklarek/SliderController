@@ -97,31 +97,38 @@ final internal class Slider: UISlider {
             }
     }
 
-    private var textAttributes: [NSAttributedStringKey: Any] {
-        return [
-            NSAttributedStringKey.font: labelFont ?? defaultLabelFont,
-            NSAttributedStringKey.foregroundColor: labelColor ?? defaultLabelColor
-        ]
-    }
-
     private func circleCenter(anchor: CGFloat, between: (startX: CGFloat, endX: CGFloat)) -> CGPoint {
         let pointX = anchor * frame.width
         let x = max(between.startX + anchorRadius, min(pointX, between.endX - anchorRadius))
         let y = frame.height / 2
+
         return CGPoint(x: x, y: y)
     }
 
     private func labelPosition(forText text: String,
                                anchor: CGFloat,
                                between: (startX: CGFloat, endX: CGFloat)) -> CGPoint {
-        let horizontalOffset = horizontalLabelOffset ?? defaultHorizontalLabelOffset
-        let verticalOffset = verticalLabelOffset ?? defaultVerticalLabelOffset
-
         let textWidth = (text as NSString).size(withAttributes: textAttributes).width
         let pointX = frame.width * anchor
         let minX = between.startX + horizontalOffset
         let maxX = min(pointX - textWidth / 2, between.endX - textWidth - horizontalOffset)
+
         return CGPoint(x: max(minX, maxX), y: frame.height / 2 + anchorRadius + verticalOffset)
+    }
+
+    private var horizontalOffset: CGFloat {
+        return horizontalLabelOffset ?? defaultHorizontalLabelOffset
+    }
+
+    private var verticalOffset: CGFloat {
+        return verticalLabelOffset ?? defaultVerticalLabelOffset
+    }
+
+    private var textAttributes: [NSAttributedStringKey: Any] {
+        return [
+            NSAttributedStringKey.font: labelFont ?? defaultLabelFont,
+            NSAttributedStringKey.foregroundColor: labelColor ?? defaultLabelColor
+        ]
     }
 
     // MARK: - Default values
