@@ -9,17 +9,25 @@ public protocol SliderControlling: class {
     weak var delegate: SliderControllerDelegate? { get set }
     func setSlider(value: Float, animated: Bool)
     var sliderValue: Float { get }
-    var trackHeight: CGFloat { get set }
-    var selectedTrackColor: UIColor { get set }
-    var unselectedTrackColor: UIColor { get set }
-    var selectedAnchorColor: UIColor { get set }
-    var unselectedAnchorColor: UIColor { get set }
-    var isThumbHidden: Bool { get set }
-    var anchors: [CGFloat] { get set }
-    var anchorRadius: CGFloat { get set }
     var minimumValue: Float { get set }
     var maximumValue: Float { get set }
     var controller: UIViewController { get }
+
+    var trackHeight: CGFloat { get set }
+    var selectedTrackColor: UIColor { get set }
+    var unselectedTrackColor: UIColor { get set }
+
+    var anchors: [CGFloat] { get set }
+    var anchorRadius: CGFloat { get set }
+    var selectedAnchorColor: UIColor { get set }
+    var unselectedAnchorColor: UIColor { get set }
+
+    var labels: [String] { get set }
+    var labelFont: UIFont? { get set }
+    var labelColor: UIColor? { get set }
+    var horizontalLabelOffset: CGFloat? { get set }
+    var verticalLabelOffset: CGFloat? { get set }
+    var isThumbHidden: Bool { get set }
 }
 
 final public class SliderController: UIViewController, SliderControlling {
@@ -49,6 +57,20 @@ final public class SliderController: UIViewController, SliderControlling {
         return slider.value
     }
 
+    public var minimumValue: Float {
+        set { slider.minimumValue = newValue }
+        get { return slider.minimumValue }
+    }
+
+    public var maximumValue: Float {
+        set { slider.maximumValue = newValue }
+        get { return slider.maximumValue }
+    }
+
+    public var controller: UIViewController {
+        return self
+    }
+
     public var trackHeight: CGFloat {
         set {
             slider.trackHeight = newValue
@@ -73,29 +95,6 @@ final public class SliderController: UIViewController, SliderControlling {
         get { return slider.unselectedTrackColor }
     }
 
-    public var selectedAnchorColor: UIColor {
-        set {
-            slider.selectedAnchorColor = newValue
-            slider.setNeedsDisplay()
-        }
-        get { return slider.selectedAnchorColor }
-    }
-
-    public var unselectedAnchorColor: UIColor {
-        set {
-            slider.unselectedAnchorColor = newValue
-            slider.setNeedsDisplay()
-        }
-        get { return slider.unselectedAnchorColor }
-    }
-
-    public var isThumbHidden: Bool {
-        set {
-            slider.isThumbHidden = newValue
-        }
-        get { return slider.isThumbHidden }
-    }
-
     public var anchors: [CGFloat] {
         set {
             slider.anchors = newValue
@@ -112,18 +111,68 @@ final public class SliderController: UIViewController, SliderControlling {
         get { return slider.anchorRadius }
     }
 
-    public var minimumValue: Float {
-        set { slider.minimumValue = newValue }
-        get { return slider.minimumValue }
+    public var selectedAnchorColor: UIColor {
+        set {
+            slider.selectedAnchorColor = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.selectedAnchorColor }
     }
 
-    public var maximumValue: Float {
-        set { slider.maximumValue = newValue }
-        get { return slider.maximumValue }
+    public var unselectedAnchorColor: UIColor {
+        set {
+            slider.unselectedAnchorColor = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.unselectedAnchorColor }
     }
 
-    public var controller: UIViewController {
-        return self
+    public var labels: [String] {
+        set {
+            slider.labels = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.labels }
+    }
+
+    public var labelFont: UIFont? {
+        set {
+            slider.labelFont = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.labelFont }
+    }
+
+    public var labelColor: UIColor? {
+        set {
+            slider.labelColor = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.labelColor }
+    }
+
+    public var horizontalLabelOffset: CGFloat? {
+        set {
+            slider.horizontalLabelOffset = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.horizontalLabelOffset }
+    }
+
+    public var verticalLabelOffset: CGFloat? {
+        set {
+            slider.verticalLabelOffset = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.verticalLabelOffset }
+    }
+
+    public var isThumbHidden: Bool {
+        set {
+            slider.isThumbHidden = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.isThumbHidden }
     }
 
     // MARK: - Interactions
