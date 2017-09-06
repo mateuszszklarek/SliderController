@@ -20,6 +20,11 @@ class ViewController: UIViewController, SliderControllerDelegate {
         sliderController.anchors = [0, 0.3, 0.6, 1.0]
         sliderController.anchorRadius = 15
         sliderController.trackHeight = 7.5
+        sliderController.labels = ["A", "B", "C", "D"]
+        sliderController.horizontalLabelOffset = 0
+        sliderController.verticalLabelOffset = 0
+        sliderController.labelFont = UIFont.boldSystemFont(ofSize: 10)
+        sliderController.labelColor = UIColor.black
         sliderController.delegate = self
     }
 
