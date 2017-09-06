@@ -87,19 +87,11 @@ final internal class Slider: UISlider {
         guard texts.count == anchors.count else {
             return
         }
-        let horizontalOffset = horizontalLabelOffset ?? defaultHorizontalLabelOffset
-        let verticalOffset = verticalLabelOffset ?? defaultVerticalLabelOffset
 
         texts.enumerated()
-            .map { (idx, text) -> (String, CGPoint) in
-                let pointX = anchors[idx] * frame.width
-                let textWidth = (text as NSString).size(withAttributes: textAttributes).width
-                let minX = between.startX + horizontalOffset
-                let maxX = min(pointX - textWidth / 2, between.endX - textWidth - horizontalOffset)
-                let x = max(minX, maxX)
-                let y = frame.height / 2 + anchorRadius + verticalOffset
-                let labelOrigin = CGPoint(x: x, y: y)
-                return (text, labelOrigin)
+            .map { (index, text) -> (String, CGPoint) in
+                let textPosition = labelPosition(forText: text, anchor: anchors[index], between: between)
+                return (text, textPosition)
             }
             .forEach { (string, point) -> Void in
                 string.draw(at: point, withAttributes: textAttributes)
@@ -118,6 +110,19 @@ final internal class Slider: UISlider {
         let x = max(between.startX + anchorRadius, min(pointX, between.endX - anchorRadius))
         let y = frame.height / 2
         return CGPoint(x: x, y: y)
+    }
+
+    private func labelPosition(forText text: String,
+                               anchor: CGFloat,
+                               between: (startX: CGFloat, endX: CGFloat)) -> CGPoint {
+        let horizontalOffset = horizontalLabelOffset ?? defaultHorizontalLabelOffset
+        let verticalOffset = verticalLabelOffset ?? defaultVerticalLabelOffset
+
+        let textWidth = (text as NSString).size(withAttributes: textAttributes).width
+        let pointX = frame.width * anchor
+        let minX = between.startX + horizontalOffset
+        let maxX = min(pointX - textWidth / 2, between.endX - textWidth - horizontalOffset)
+        return CGPoint(x: max(minX, maxX), y: frame.height / 2 + anchorRadius + verticalOffset)
     }
 
     // MARK: - Default values
