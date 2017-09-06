@@ -92,6 +92,7 @@ final public class SliderController: UIViewController, SliderControlling {
     public var isThumbHidden: Bool {
         set {
             slider.isThumbHidden = newValue
+            slider.setNeedsDisplay()
         }
         get { return slider.isThumbHidden }
     }
