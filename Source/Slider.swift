@@ -9,6 +9,12 @@ final internal class Slider: UISlider {
     var anchors: [CGFloat] = []
     var anchorRadius: CGFloat = 12
 
+    var labels: [String] = []
+    var labelFont: UIFont?
+    var labelColor: UIColor?
+    var horizontalLabelOffset: CGFloat?
+    var verticalLabelOffset: CGFloat?
+
     // MARK: Overridden
 
     override func draw(_ rect: CGRect) {
@@ -44,7 +50,8 @@ final internal class Slider: UISlider {
 
         drawLine(inContext: context, between: (startX + offset, endX - offset), color: color)
         drawCircles(inContext: context, between: (startX, endX), color: color)
-
+        draw(texts: labels, between: (startX, endX), color: color)
+ 
         return UIGraphicsGetImageFromCurrentImageContext()?
             .resizableImage(withCapInsets: .zero)
     }
@@ -74,11 +81,50 @@ final internal class Slider: UISlider {
             }
     }
 
+    private func draw(texts: [String],
+                      between: (startX: CGFloat, endX: CGFloat),
+                      color: UIColor) {
+        guard texts.count == anchors.count else {
+            return
+        }
+        let horizontalOffset = horizontalLabelOffset ?? defaultHorizontalLabelOffset
+        let verticalOffset = verticalLabelOffset ?? defaultVerticalLabelOffset
+
+        texts.enumerated()
+            .map { (idx, text) -> (String, CGPoint) in
+                let pointX = anchors[idx] * frame.width
+                let textWidth = (text as NSString).size(withAttributes: textAttributes).width
+                let minX = between.startX + horizontalOffset
+                let maxX = min(pointX - textWidth / 2, between.endX - textWidth - horizontalOffset)
+                let x = max(minX, maxX)
+                let y = frame.height / 2 + anchorRadius + verticalOffset
+                let labelOrigin = CGPoint(x: x, y: y)
+                return (text, labelOrigin)
+            }
+            .forEach { (string, point) -> Void in
+                string.draw(at: point, withAttributes: textAttributes)
+            }
+    }
+
+    private var textAttributes: [NSAttributedStringKey: Any] {
+        return [
+            NSAttributedStringKey.font: labelFont ?? defaultLabelFont,
+            NSAttributedStringKey.foregroundColor: labelColor ?? defaultLabelColor
+        ]
+    }
+
     private func circleCenter(anchor: CGFloat, between: (startX: CGFloat, endX: CGFloat)) -> CGPoint {
         let pointX = anchor * frame.width
         let x = max(between.startX + anchorRadius, min(pointX, between.endX - anchorRadius))
         let y = frame.height / 2
         return CGPoint(x: x, y: y)
     }
+
+    // MARK: - Default values
+
+    private let defaultLabelFont: UIFont = UIFont.systemFont(ofSize: 12)
+    private let defaultLabelColor: UIColor = .red
+    private let defaultHorizontalLabelOffset: CGFloat = 2
+    private let defaultVerticalLabelOffset: CGFloat = 10
 
 }
