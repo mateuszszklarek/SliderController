@@ -15,7 +15,7 @@ class ViewController: UIViewController, SliderControllerDelegate {
         sliderController.unselectedTrackColor = .red
         sliderController.selectedTrackColor = .green
         sliderController.isThumbHidden = true
-        sliderController.anchors = [0, 0.3, 0.8, 1.0]
+        sliderController.anchors = [0, 0.3, 0.6, 1.0]
         sliderController.anchorRadius = 15
         sliderController.trackHeight = 7.5
         sliderController.delegate = self
