@@ -50,12 +50,11 @@ final internal class Slider: UISlider {
 
         let offset = trackHeight / 2
 
-        drawLine(inContext: context, between: (startX + offset, endX - offset), color: color)
-        drawCircles(inContext: context, between: (startX, endX), color: color)
-        draw(texts: labels, between: (startX, endX), color: color)
- 
-        return UIGraphicsGetImageFromCurrentImageContext()?
-            .resizableImage(withCapInsets: .zero)
+        drawLine(inContext: context, between: (startX + offset, endX - offset), color: trackColor)
+        drawCircles(inContext: context, between: (startX, endX), color: anchorColor)
+        drawLabels(labels, between: (startX, endX))
+
+        return UIGraphicsGetImageFromCurrentImageContext()?.resizableImage(withCapInsets: .zero)
     }
 
     private func drawLine(inContext context: CGContext,
@@ -83,14 +82,12 @@ final internal class Slider: UISlider {
             }
     }
 
-    private func draw(texts: [String],
-                      between: (startX: CGFloat, endX: CGFloat),
-                      color: UIColor) {
-        guard texts.count == anchors.count else {
+    private func drawLabels(_ labels: [String], between: (startX: CGFloat, endX: CGFloat)) {
+        guard labels.count == anchors.count else {
             return
         }
 
-        texts.enumerated()
+        labels.enumerated()
             .map { (index, text) -> (String, CGPoint) in
                 let textPosition = labelPosition(forText: text, anchor: anchors[index], between: between)
                 return (text, textPosition)
