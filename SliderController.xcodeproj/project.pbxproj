@@ -7,19 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03524F04AF1419D50840E1BB /* Pods_SliderControllerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D062D243621393557E8F907A /* Pods_SliderControllerTests.framework */; };
 		4E3967341F2E54AB00FA3B40 /* SliderController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E3967321F2E54AB00FA3B40 /* SliderController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4E3967391F2E54E000FA3B40 /* SliderControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3967361F2E54D200FA3B40 /* SliderControllerTests.swift */; };
 		4E39675A1F2E57E800FA3B40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3967591F2E57E800FA3B40 /* AppDelegate.swift */; };
 		4E39675C1F2E57E800FA3B40 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E39675B1F2E57E800FA3B40 /* ViewController.swift */; };
 		4E3967611F2E57E800FA3B40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E3967601F2E57E800FA3B40 /* Assets.xcassets */; };
 		4E3967641F2E57E800FA3B40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3967621F2E57E800FA3B40 /* LaunchScreen.storyboard */; };
 		4E82CC141F2FCDEF00C088E8 /* CGContext+AddCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E82CC131F2FCDEF00C088E8 /* CGContext+AddCircle.swift */; };
 		4EBECB111F35E80E005C64BA /* EarlGrey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EBECB101F35E80E005C64BA /* EarlGrey.framework */; };
-		4EBECB131F35E846005C64BA /* EarlGrey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBECB121F35E846005C64BA /* EarlGrey.swift */; };
 		4EBECB171F35E8FC005C64BA /* EarlGrey.framework in EarlGrey Copy Files */ = {isa = PBXBuildFile; fileRef = 4EBECB101F35E80E005C64BA /* EarlGrey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		4EBECB191F35FF3C005C64BA /* SliderControllerDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBECB181F35FF3C005C64BA /* SliderControllerDelegateSpy.swift */; };
-		4EBECB1B1F36082C005C64BA /* SliderControllerTests+CustomAsserts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBECB1A1F36082C005C64BA /* SliderControllerTests+CustomAsserts.swift */; };
 		4ECA07D91F2E5D5E0024BD0D /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECA07D81F2E5D5E0024BD0D /* Slider.swift */; };
 		4ECA07DB1F2E5EBA0024BD0D /* SliderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECA07DA1F2E5EBA0024BD0D /* SliderController.swift */; };
 		4EF2AD2C1F2E51C300666035 /* SliderController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF2AD221F2E51C300666035 /* SliderController.framework */; };
@@ -59,7 +55,6 @@
 
 /* Begin PBXFileReference section */
 		2C6C6C0E370528C067A9773A /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		312210189002083FEDA045C2 /* Pods-SliderControllerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SliderControllerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SliderControllerTests/Pods-SliderControllerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		35038F04F730971CB2BC5F4A /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		4E3967311F2E54AB00FA3B40 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E3967321F2E54AB00FA3B40 /* SliderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderController.h; sourceTree = "<group>"; };
@@ -81,8 +76,6 @@
 		4EF2AD221F2E51C300666035 /* SliderController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SliderController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EF2AD2B1F2E51C300666035 /* SliderControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SliderControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5381CC84CA9AA431E08FAB15 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
-		C8E1DAFC8EA05AC931971A5F /* Pods-SliderControllerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SliderControllerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SliderControllerTests/Pods-SliderControllerTests.release.xcconfig"; sourceTree = "<group>"; };
-		D062D243621393557E8F907A /* Pods_SliderControllerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SliderControllerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +100,6 @@
 			files = (
 				4EF2AD2C1F2E51C300666035 /* SliderController.framework in Frameworks */,
 				4EBECB111F35E80E005C64BA /* EarlGrey.framework in Frameworks */,
-				03524F04AF1419D50840E1BB /* Pods_SliderControllerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,8 +111,6 @@
 			children = (
 				5381CC84CA9AA431E08FAB15 /* Pods-Example.debug.xcconfig */,
 				35038F04F730971CB2BC5F4A /* Pods-Example.release.xcconfig */,
-				312210189002083FEDA045C2 /* Pods-SliderControllerTests.debug.xcconfig */,
-				C8E1DAFC8EA05AC931971A5F /* Pods-SliderControllerTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -130,7 +120,6 @@
 			children = (
 				4EBECB101F35E80E005C64BA /* EarlGrey.framework */,
 				2C6C6C0E370528C067A9773A /* Pods_Example.framework */,
-				D062D243621393557E8F907A /* Pods_SliderControllerTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -248,7 +237,6 @@
 				4E3967541F2E57E800FA3B40 /* Frameworks */,
 				4E3967551F2E57E800FA3B40 /* Resources */,
 				1336A6AD3E605B896590C976 /* [CP] Embed Pods Frameworks */,
-				B8C8F9CE5608AFA7D519E7FE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,12 +269,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4EF2AD391F2E51C300666035 /* Build configuration list for PBXNativeTarget "SliderControllerTests" */;
 			buildPhases = (
-				7C6C822B66B0DA5A667376AB /* [CP] Check Pods Manifest.lock */,
 				4EF2AD271F2E51C300666035 /* Sources */,
 				4EF2AD281F2E51C300666035 /* Frameworks */,
 				4EF2AD291F2E51C300666035 /* Resources */,
-				8A511ED48A22DEC72CB39BCA /* [CP] Embed Pods Frameworks */,
-				142790F75BD1E842BB330181 /* [CP] Copy Pods Resources */,
 				4EBECB161F35E8E7005C64BA /* EarlGrey Copy Files */,
 			);
 			buildRules = (
@@ -333,6 +318,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -381,58 +367,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SliderController/SliderController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SliderController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		142790F75BD1E842BB330181 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SliderControllerTests/Pods-SliderControllerTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7C6C822B66B0DA5A667376AB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		8A511ED48A22DEC72CB39BCA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SliderControllerTests/Pods-SliderControllerTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9AB1B12226576A93CA380BA8 /* [CP] Check Pods Manifest.lock */ = {
@@ -441,28 +385,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		B8C8F9CE5608AFA7D519E7FE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -491,10 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EBECB131F35E846005C64BA /* EarlGrey.swift in Sources */,
-				4EBECB1B1F36082C005C64BA /* SliderControllerTests+CustomAsserts.swift in Sources */,
 				4EBECB191F35FF3C005C64BA /* SliderControllerDelegateSpy.swift in Sources */,
-				4E3967391F2E54E000FA3B40 /* SliderControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,7 +640,6 @@
 		};
 		4EF2AD3A1F2E51C300666035 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 312210189002083FEDA045C2 /* Pods-SliderControllerTests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -730,7 +658,6 @@
 		};
 		4EF2AD3B1F2E51C300666035 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C8E1DAFC8EA05AC931971A5F /* Pods-SliderControllerTests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
