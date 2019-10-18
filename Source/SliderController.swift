@@ -21,6 +21,8 @@ public protocol SliderControlling: class {
     var anchorRadius: CGFloat { get set }
     var selectedAnchorColor: UIColor { get set }
     var unselectedAnchorColor: UIColor { get set }
+    var currentValueLabelFont: UIFont? { get set }
+    var currentValueLabelColor: UIColor? { get set }
 
     var labels: [String] { get set }
     var selectedLabelFont: UIFont? { get set }
@@ -168,6 +170,22 @@ final public class SliderController: UIViewController, SliderControlling {
             slider.setNeedsDisplay()
         }
         get { slider.unselectedLabelColor }
+    }
+
+    public var currentValueLabelFont: UIFont? {
+        set {
+            slider.currentValueLabelFont = newValue
+            slider.setNeedsDisplay()
+        }
+        get { slider.currentValueLabelFont }
+    }
+
+    public var currentValueLabelColor: UIColor? {
+        set {
+            slider.currentValueLabelColor = newValue
+            slider.setNeedsDisplay()
+        }
+        get { slider.currentValueLabelColor }
     }
 
     public var horizontalLabelOffset: CGFloat? {
