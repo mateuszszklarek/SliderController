@@ -124,10 +124,10 @@ final internal class Slider: UISlider {
         return verticalLabelOffset ?? defaultVerticalLabelOffset
     }
 
-    private var textAttributes: [NSAttributedStringKey: Any] {
+    private var textAttributes: [NSAttributedString.Key: Any] {
         return [
-            NSAttributedStringKey.font: labelFont ?? defaultLabelFont,
-            NSAttributedStringKey.foregroundColor: labelColor ?? defaultLabelColor
+            NSAttributedString.Key.font: labelFont ?? defaultLabelFont,
+            NSAttributedString.Key.foregroundColor: labelColor ?? defaultLabelColor
         ]
     }
 

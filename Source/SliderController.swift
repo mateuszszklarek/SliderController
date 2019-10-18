@@ -6,7 +6,7 @@ public protocol SliderControllerDelegate: class {
 }
 
 public protocol SliderControlling: class {
-    weak var delegate: SliderControllerDelegate? { get set }
+    var delegate: SliderControllerDelegate? { get set }
     func setSlider(value: Float, animated: Bool)
     var sliderValue: Float { get }
     var minimumValue: Float { get set }
