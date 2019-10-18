@@ -28,6 +28,7 @@ public protocol SliderControlling: class {
     var horizontalLabelOffset: CGFloat? { get set }
     var verticalLabelOffset: CGFloat? { get set }
     var isThumbHidden: Bool { get set }
+    var thumbImage: UIImage? { get set }
 }
 
 final public class SliderController: UIViewController, SliderControlling {
@@ -173,6 +174,14 @@ final public class SliderController: UIViewController, SliderControlling {
             slider.setNeedsDisplay()
         }
         get { return slider.isThumbHidden }
+    }
+
+    public var thumbImage: UIImage? {
+        set {
+            slider.thumbImage = newValue
+            slider.setNeedsDisplay()
+        }
+        get { return slider.thumbImage }
     }
 
     // MARK: - Interactions

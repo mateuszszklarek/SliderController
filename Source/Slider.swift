@@ -8,6 +8,7 @@ final internal class Slider: UISlider {
     var selectedAnchorColor: UIColor = .blue
     var unselectedAnchorColor: UIColor = .white
     var isThumbHidden: Bool = false
+    var thumbImage: UIImage?
     var anchors: [CGFloat] = []
     var anchorRadius: CGFloat = 12
 
@@ -28,7 +29,7 @@ final internal class Slider: UISlider {
         setMinimumTrackImage(selectedTrackImage, for: .normal)
         setMaximumTrackImage(unselectedTrackImage, for: .normal)
 
-        isThumbHidden ? setThumbImage(UIImage(), for: .normal): setThumbImage(nil, for: .normal)
+        isThumbHidden ? setThumbImage(UIImage(), for: .normal): setThumbImage(thumbImage, for: .normal)
     }
 
     // MARK: Private
