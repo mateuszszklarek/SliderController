@@ -12,9 +12,12 @@ final internal class Slider: UISlider {
     var anchors: [CGFloat] = []
     var anchorRadius: CGFloat = 12
 
+    var selectedLabelFont: UIFont?
+    var unselectedLabelFont: UIFont?
+    var selectedLabelColor: UIColor?
+    var unselectedLabelColor: UIColor?
+
     var labels: [String] = []
-    var labelFont: UIFont?
-    var labelColor: UIColor?
     var horizontalLabelOffset: CGFloat?
     var verticalLabelOffset: CGFloat?
 
@@ -89,11 +92,12 @@ final internal class Slider: UISlider {
         }
 
         labels.enumerated()
-            .map { (index, text) -> (String, CGPoint) in
+            .map { (index, text) -> (String, CGPoint, CGFloat) in
                 let textPosition = labelPosition(forText: text, anchor: anchors[index], between: between)
-                return (text, textPosition)
+                return (text, textPosition, anchors[index])
             }
-            .forEach { (string, point) -> Void in
+            .forEach { string, point, anchor in
+                let textAttributes = isSelected(anchor: anchor) ? selectedTextAttributes : unselectedTextAttributes
                 string.draw(at: point, withAttributes: textAttributes)
             }
     }
@@ -109,12 +113,20 @@ final internal class Slider: UISlider {
     private func labelPosition(forText text: String,
                                anchor: CGFloat,
                                between: (startX: CGFloat, endX: CGFloat)) -> CGPoint {
+        let textAttributes = isSelected(anchor: anchor) ? selectedTextAttributes : unselectedTextAttributes
         let textWidth = (text as NSString).size(withAttributes: textAttributes).width
         let pointX = frame.width * anchor
         let minX = between.startX + horizontalOffset
         let maxX = min(pointX - textWidth / 2, between.endX - textWidth - horizontalOffset)
 
         return CGPoint(x: max(minX, maxX), y: frame.height / 2 + anchorRadius + verticalOffset)
+    }
+
+    private func isSelected(anchor: CGFloat) -> Bool {
+        let anchorsRange: CGFloat = 1
+        let valuesRange = CGFloat(maximumValue - minimumValue)
+        let normalizedValue = (anchor * valuesRange) + CGFloat(minimumValue)
+        return normalizedValue <= CGFloat(value)
     }
 
     private var horizontalOffset: CGFloat {
@@ -125,10 +137,17 @@ final internal class Slider: UISlider {
         return verticalLabelOffset ?? defaultVerticalLabelOffset
     }
 
-    private var textAttributes: [NSAttributedString.Key: Any] {
+    private var selectedTextAttributes: [NSAttributedString.Key: Any] {
         return [
-            NSAttributedString.Key.font: labelFont ?? defaultLabelFont,
-            NSAttributedString.Key.foregroundColor: labelColor ?? defaultLabelColor
+            NSAttributedString.Key.font: selectedLabelFont ?? defaultLabelFont,
+            NSAttributedString.Key.foregroundColor: selectedLabelColor ?? defaultLabelColor
+        ]
+    }
+
+    private var unselectedTextAttributes: [NSAttributedString.Key: Any] {
+        return [
+            NSAttributedString.Key.font: unselectedLabelFont ?? defaultLabelFont,
+            NSAttributedString.Key.foregroundColor: unselectedLabelColor ?? defaultLabelColor
         ]
     }
 

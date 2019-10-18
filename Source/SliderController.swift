@@ -23,8 +23,10 @@ public protocol SliderControlling: class {
     var unselectedAnchorColor: UIColor { get set }
 
     var labels: [String] { get set }
-    var labelFont: UIFont? { get set }
-    var labelColor: UIColor? { get set }
+    var selectedLabelFont: UIFont? { get set }
+    var unselectedLabelFont: UIFont? { get set }
+    var selectedLabelColor: UIColor? { get set }
+    var unselectedLabelColor: UIColor? { get set }
     var horizontalLabelOffset: CGFloat? { get set }
     var verticalLabelOffset: CGFloat? { get set }
     var isThumbHidden: Bool { get set }
@@ -136,20 +138,36 @@ final public class SliderController: UIViewController, SliderControlling {
         get { return slider.labels }
     }
 
-    public var labelFont: UIFont? {
+    public var selectedLabelFont: UIFont? {
         set {
-            slider.labelFont = newValue
+            slider.selectedLabelFont = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.labelFont }
+        get { slider.selectedLabelFont }
     }
 
-    public var labelColor: UIColor? {
+    public var unselectedLabelFont: UIFont? {
         set {
-            slider.labelColor = newValue
+            slider.unselectedLabelFont = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.labelColor }
+        get { slider.unselectedLabelFont }
+    }
+
+    public var selectedLabelColor: UIColor? {
+        set {
+            slider.selectedLabelColor = newValue
+            slider.setNeedsDisplay()
+        }
+        get { slider.selectedLabelColor }
+    }
+
+    public var unselectedLabelColor: UIColor? {
+        set {
+            slider.unselectedLabelColor = newValue
+            slider.setNeedsDisplay()
+        }
+        get { slider.unselectedLabelColor }
     }
 
     public var horizontalLabelOffset: CGFloat? {
@@ -203,11 +221,13 @@ final public class SliderController: UIViewController, SliderControlling {
         let targetValue = Float(tappedPoint.x - slider.frame.origin.x) * unitWidth
 
         slider.setValue(targetValue, animated: true)
+        slider.setNeedsDisplay()
         delegate?.sliderDidTap(atValue: targetValue)
     }
 
     @objc
     private func sliderValueDidChange(sender: UISlider) {
+        slider.setNeedsDisplay()
         delegate?.sliderValueDidChange(value: sender.value)
     }
 
