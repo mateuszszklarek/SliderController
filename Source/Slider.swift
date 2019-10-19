@@ -1,4 +1,4 @@
-final internal class Slider: UISlider {
+class Slider: UISlider {
 
     // MARK: Interface
 
@@ -22,6 +22,13 @@ final internal class Slider: UISlider {
     var labels: [String] = []
     var horizontalLabelOffset: CGFloat?
     var verticalLabelOffset: CGFloat?
+
+    func roundToNearestAnchor() {
+        let valueInAnchorRS = anchorsReferenceSystem(value: valueDecimal)
+        guard let nearest = anchors.decimal.nearest(value: valueInAnchorRS) else { return }
+        let nearestSliderRS = sliderReferenceSystem(value: nearest)
+        value = nearestSliderRS.float
+    }
 
     // MARK: Overridden
 
@@ -99,7 +106,7 @@ final internal class Slider: UISlider {
                 return (text, textPosition, anchors[index])
             }
             .forEach { string, point, anchor in
-                let textAttributes = attributes(for: isSelected(anchor: anchor))
+                let textAttributes = attributes(for: selection(for: anchor))
                 string.draw(at: point, withAttributes: textAttributes)
             }
     }
@@ -115,7 +122,7 @@ final internal class Slider: UISlider {
     private func labelPosition(forText text: String,
                                anchor: CGFloat,
                                between: (startX: CGFloat, endX: CGFloat)) -> CGPoint {
-        let textAttributes = attributes(for: isSelected(anchor: anchor))
+        let textAttributes = attributes(for: selection(for: anchor))
         let textWidth = (text as NSString).size(withAttributes: textAttributes).width
         let pointX = frame.width * anchor
         let minX = between.startX + horizontalOffset
@@ -124,29 +131,16 @@ final internal class Slider: UISlider {
         return CGPoint(x: max(minX, maxX), y: frame.height / 2 + anchorRadius + verticalOffset)
     }
 
-    private func isSelected(anchor: CGFloat) -> SelectionType {
-        let anchorsRange: CGFloat = 1
-        let valuesRange = CGFloat(maximumValue - minimumValue)
-        let normalizedAnchorValue = (anchor * valuesRange) + CGFloat(minimumValue)
-        return selectionType(for: normalizedAnchorValue, sliderValue: CGFloat(value))
-    }
-
     enum SelectionType {
         case unselcted
         case currentValue
         case selected
     }
 
-    private var horizontalOffset: CGFloat {
-        return horizontalLabelOffset ?? defaultHorizontalLabelOffset
-    }
-
-    private var verticalOffset: CGFloat {
-        return verticalLabelOffset ?? defaultVerticalLabelOffset
-    }
-
-    private func selectionType(for anchorValue: CGFloat, sliderValue: CGFloat) -> SelectionType {
-        switch (anchorValue, sliderValue) {
+    private func selection(for anchor: CGFloat) -> SelectionType {
+        let newValue = anchor.decimal
+            .normalizeToRange(newMax: maxValueDecimal, newMin: minValueDecimal, oldMax: 1, oldMin: 0)
+        switch (newValue.float, valueDecimal.float) {
         case let (x, y) where x == y:
             return .currentValue
         case let (x, y) where x > y:
@@ -165,6 +159,22 @@ final internal class Slider: UISlider {
         case .unselcted:
             return unselectedTextAttributes
         }
+    }
+
+    private func sliderReferenceSystem(value: Decimal) -> Decimal {
+        return value.normalizeToRange(newMax: maxValueDecimal, newMin: minValueDecimal, oldMax: 1, oldMin: 0)
+    }
+
+    private func anchorsReferenceSystem(value: Decimal) -> Decimal {
+        return value.normalizeToRange(newMax: 1, newMin: 0, oldMax: maxValueDecimal, oldMin: minValueDecimal)
+    }
+
+    private var horizontalOffset: CGFloat {
+        return horizontalLabelOffset ?? defaultHorizontalLabelOffset
+    }
+
+    private var verticalOffset: CGFloat {
+        return verticalLabelOffset ?? defaultVerticalLabelOffset
     }
 
     private var selectedTextAttributes: [NSAttributedString.Key: Any] {
@@ -186,6 +196,18 @@ final internal class Slider: UISlider {
             NSAttributedString.Key.font: currentValueLabelFont ?? defaultLabelFont,
             NSAttributedString.Key.foregroundColor: currentValueLabelColor ?? defaultLabelColor
         ]
+    }
+
+    private var minValueDecimal: Decimal {
+        return minimumValue.decimal
+    }
+
+    private var maxValueDecimal: Decimal {
+        return maximumValue.decimal
+    }
+
+    private var valueDecimal: Decimal {
+        return value.decimal
     }
 
     // MARK: - Default values

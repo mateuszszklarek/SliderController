@@ -11,6 +11,7 @@ public protocol SliderControlling: class {
     var sliderValue: Float { get }
     var minimumValue: Float { get set }
     var maximumValue: Float { get set }
+    var isStepSlider: Bool { get set }
     var controller: UIViewController { get }
 
     var trackHeight: CGFloat { get set }
@@ -35,7 +36,7 @@ public protocol SliderControlling: class {
     var thumbImage: UIImage? { get set }
 }
 
-final public class SliderController: UIViewController, SliderControlling {
+public class SliderController: UIViewController, SliderControlling {
 
     public override func loadView() {
         view = UIView(frame: .zero)
@@ -71,6 +72,8 @@ final public class SliderController: UIViewController, SliderControlling {
         set { slider.maximumValue = newValue }
         get { return slider.maximumValue }
     }
+
+    public var isStepSlider = false
 
     public var controller: UIViewController {
         return self
@@ -239,12 +242,20 @@ final public class SliderController: UIViewController, SliderControlling {
         let targetValue = Float(tappedPoint.x - slider.frame.origin.x) * unitWidth
 
         slider.setValue(targetValue, animated: true)
+
+        if isStepSlider {
+            slider.roundToNearestAnchor()
+        }
+
         slider.setNeedsDisplay()
         delegate?.sliderDidTap(atValue: targetValue)
     }
 
     @objc
     private func sliderValueDidChange(sender: UISlider) {
+        if isStepSlider {
+            slider.roundToNearestAnchor()
+        }
         slider.setNeedsDisplay()
         delegate?.sliderValueDidChange(value: sender.value)
     }

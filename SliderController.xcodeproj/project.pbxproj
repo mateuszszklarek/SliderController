@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4734869F235B204C004C8EE3 /* CGFloat+Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4734869B235B1F33004C8EE3 /* CGFloat+Decimal.swift */; };
+		473486A3235B2241004C8EE3 /* Float+Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473486A2235B2241004C8EE3 /* Float+Decimal.swift */; };
+		473486A5235B2254004C8EE3 /* Decimal+Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473486A4235B2254004C8EE3 /* Decimal+Float.swift */; };
+		473486A7235B2268004C8EE3 /* Array+Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473486A6235B2268004C8EE3 /* Array+Decimal.swift */; };
+		473486A9235B227C004C8EE3 /* Sequence+Nearest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473486A8235B227C004C8EE3 /* Sequence+Nearest.swift */; };
+		473486AC235B22D2004C8EE3 /* Decimal+NormalizeToRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473486AB235B22D2004C8EE3 /* Decimal+NormalizeToRange.swift */; };
 		4E3967341F2E54AB00FA3B40 /* SliderController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E3967321F2E54AB00FA3B40 /* SliderController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4E39675A1F2E57E800FA3B40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3967591F2E57E800FA3B40 /* AppDelegate.swift */; };
 		4E39675C1F2E57E800FA3B40 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E39675B1F2E57E800FA3B40 /* ViewController.swift */; };
@@ -56,6 +62,12 @@
 /* Begin PBXFileReference section */
 		2C6C6C0E370528C067A9773A /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35038F04F730971CB2BC5F4A /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
+		4734869B235B1F33004C8EE3 /* CGFloat+Decimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Decimal.swift"; sourceTree = "<group>"; };
+		473486A2235B2241004C8EE3 /* Float+Decimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Decimal.swift"; sourceTree = "<group>"; };
+		473486A4235B2254004C8EE3 /* Decimal+Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Float.swift"; sourceTree = "<group>"; };
+		473486A6235B2268004C8EE3 /* Array+Decimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Decimal.swift"; sourceTree = "<group>"; };
+		473486A8235B227C004C8EE3 /* Sequence+Nearest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Nearest.swift"; sourceTree = "<group>"; };
+		473486AB235B22D2004C8EE3 /* Decimal+NormalizeToRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+NormalizeToRange.swift"; sourceTree = "<group>"; };
 		4E3967311F2E54AB00FA3B40 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E3967321F2E54AB00FA3B40 /* SliderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderController.h; sourceTree = "<group>"; };
 		4E3967351F2E54D200FA3B40 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -198,6 +210,12 @@
 				4ECA07D81F2E5D5E0024BD0D /* Slider.swift */,
 				4E3967321F2E54AB00FA3B40 /* SliderController.h */,
 				4ECA07DA1F2E5EBA0024BD0D /* SliderController.swift */,
+				4734869B235B1F33004C8EE3 /* CGFloat+Decimal.swift */,
+				473486A2235B2241004C8EE3 /* Float+Decimal.swift */,
+				473486A4235B2254004C8EE3 /* Decimal+Float.swift */,
+				473486A6235B2268004C8EE3 /* Array+Decimal.swift */,
+				473486A8235B227C004C8EE3 /* Sequence+Nearest.swift */,
+				473486AB235B22D2004C8EE3 /* Decimal+NormalizeToRange.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -414,7 +432,13 @@
 			files = (
 				4ECA07DB1F2E5EBA0024BD0D /* SliderController.swift in Sources */,
 				4ECA07D91F2E5D5E0024BD0D /* Slider.swift in Sources */,
+				4734869F235B204C004C8EE3 /* CGFloat+Decimal.swift in Sources */,
+				473486A7235B2268004C8EE3 /* Array+Decimal.swift in Sources */,
+				473486A5235B2254004C8EE3 /* Decimal+Float.swift in Sources */,
+				473486AC235B22D2004C8EE3 /* Decimal+NormalizeToRange.swift in Sources */,
 				4E82CC141F2FCDEF00C088E8 /* CGContext+AddCircle.swift in Sources */,
+				473486A3235B2241004C8EE3 /* Float+Decimal.swift in Sources */,
+				473486A9235B227C004C8EE3 /* Sequence+Nearest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
