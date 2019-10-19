@@ -3,6 +3,7 @@ public protocol SliderControllerDelegate: class {
     func sliderValueDidChange(value: Float)
     func sliderDidStartSwiping()
     func sliderDidEndSwiping()
+    func sliderLabelForValue(label: String?)
 }
 
 public protocol SliderControlling: class {
@@ -238,26 +239,32 @@ public class SliderController: UIViewController, SliderControlling {
     private func didTapSlider(gestureRecognizer: UITapGestureRecognizer) {
         let tappedPoint = gestureRecognizer.location(in: slider)
 
-        let unitWidth = slider.maximumValue / Float(slider.frame.size.width)
-        let targetValue = Float(tappedPoint.x - slider.frame.origin.x) * unitWidth
+        let targetValue = slider.targetValue(tappedPoint: tappedPoint)
 
-        slider.setValue(targetValue, animated: true)
+        delegate?.sliderDidTap(atValue: targetValue)
 
-        if isStepSlider {
-            slider.roundToNearestAnchor()
+        if isStepSlider, let roundedValue = slider.roundToNearestAnchor(value: targetValue) {
+            slider.setValue(roundedValue.float, animated: true)
+            delegate?.sliderLabelForValue(label: slider.labelForSliderValue(value: roundedValue))
+        } else {
+            slider.setValue(targetValue, animated: true)
         }
 
         slider.setNeedsDisplay()
-        delegate?.sliderDidTap(atValue: targetValue)
     }
 
     @objc
     private func sliderValueDidChange(sender: UISlider) {
-        if isStepSlider {
-            slider.roundToNearestAnchor()
+        var value = sender.value
+
+        if isStepSlider, let roundedValue = slider.roundToNearestAnchor(value: sender.value) {
+            delegate?.sliderLabelForValue(label: slider.labelForSliderValue(value: roundedValue))
+            value = roundedValue.float
         }
+
         slider.setNeedsDisplay()
-        delegate?.sliderValueDidChange(value: sender.value)
+        slider.setValue(value, animated: false)
+        delegate?.sliderValueDidChange(value: value)
     }
 
     @objc

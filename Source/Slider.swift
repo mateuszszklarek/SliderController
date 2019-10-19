@@ -23,11 +23,21 @@ class Slider: UISlider {
     var horizontalLabelOffset: CGFloat?
     var verticalLabelOffset: CGFloat?
 
-    func roundToNearestAnchor() {
-        let valueInAnchorRS = anchorsReferenceSystem(value: valueDecimal)
-        guard let nearest = anchors.decimal.nearest(value: valueInAnchorRS) else { return }
-        let nearestSliderRS = sliderReferenceSystem(value: nearest)
-        value = nearestSliderRS.float
+    func roundToNearestAnchor(value: Float) -> Decimal? {
+        let valueInAnchorRS = anchorsReferenceSystem(value: value.decimal)
+        guard let nearest = anchors.decimal.nearest(value: valueInAnchorRS) else { return nil }
+        return sliderReferenceSystem(value: nearest)
+    }
+
+    func labelForSliderValue(value: Decimal) -> String? {
+        let valueInAnchroRS = anchorsReferenceSystem(value: value)
+        guard let index = anchors.decimal.firstIndex(of: valueInAnchroRS) else { return nil }
+        return labels.indices.contains(index) ? labels[index] : nil
+    }
+
+    func targetValue(tappedPoint: CGPoint) -> Float {
+        let unitWidth = maxValueDecimal / frame.size.width.decimal
+        return ((tappedPoint.x.decimal - frame.origin.x.decimal) * unitWidth).float
     }
 
     // MARK: Overridden
