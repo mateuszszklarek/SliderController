@@ -33,8 +33,7 @@ public protocol SliderControlling: class {
     var unselectedLabelColor: UIColor? { get set }
     var horizontalLabelOffset: CGFloat? { get set }
     var verticalLabelOffset: CGFloat? { get set }
-    var isThumbHidden: Bool { get set }
-    var thumbImage: UIImage? { get set }
+    var thumbStyle: Slider.ThumbStyle { get set }
 }
 
 public class SliderController: UIViewController, SliderControlling {
@@ -208,20 +207,12 @@ public class SliderController: UIViewController, SliderControlling {
         get { return slider.verticalLabelOffset }
     }
 
-    public var isThumbHidden: Bool {
+    public var thumbStyle: Slider.ThumbStyle {
         set {
-            slider.isThumbHidden = newValue
+            slider.thumbStyle = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.isThumbHidden }
-    }
-
-    public var thumbImage: UIImage? {
-        set {
-            slider.thumbImage = newValue
-            slider.setNeedsDisplay()
-        }
-        get { return slider.thumbImage }
+        get { return slider.thumbStyle }
     }
 
     // MARK: - Interactions

@@ -1,14 +1,41 @@
-class Slider: UISlider {
+public class Slider: UISlider {
 
     // MARK: Interface
+
+    public enum ThumbStyle {
+        case system
+        case hidden
+        case custom(UIImage)
+
+        var thumbImage: UIImage? {
+            switch self {
+            case .system:
+                return nil
+            case .hidden:
+                return UIImage()
+            case .custom(let image):
+                return image
+            }
+        }
+
+        var thumbWidth: CGFloat {
+            switch self {
+            case .system:
+                return 31
+            case .hidden:
+                return 0
+            case .custom(let image):
+                return image.size.width
+            }
+        }
+    }
 
     var trackHeight: CGFloat = 10
     var selectedTrackColor: UIColor = .blue
     var unselectedTrackColor: UIColor = .white
     var selectedAnchorColor: UIColor = .blue
     var unselectedAnchorColor: UIColor = .white
-    var isThumbHidden: Bool = false
-    var thumbImage: UIImage?
+    var thumbStyle: ThumbStyle = .hidden
     var anchors: [CGFloat] = []
     var anchorRadius: CGFloat = 12
 
@@ -42,7 +69,7 @@ class Slider: UISlider {
 
     // MARK: Overridden
 
-    override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         super.draw(rect)
 
         let selectedTrackImage = drawImage(trackColor: selectedTrackColor, anchorColor: selectedAnchorColor)
@@ -51,7 +78,7 @@ class Slider: UISlider {
         setMinimumTrackImage(selectedTrackImage, for: .normal)
         setMaximumTrackImage(unselectedTrackImage, for: .normal)
 
-        isThumbHidden ? setThumbImage(UIImage(), for: .normal): setThumbImage(thumbImage, for: .normal)
+        setThumbImage(thumbStyle.thumbImage, for: .normal)
     }
 
     // MARK: Private
@@ -71,9 +98,13 @@ class Slider: UISlider {
             return nil
         }
 
+        let silderOffset: CGFloat = 2
         let offset = trackHeight / 2
+        let thumbOffset = thumbStyle.thumbWidth / 2
 
-        drawLine(inContext: context, between: (startX + offset, endX - offset), color: trackColor)
+        drawLine(inContext: context,
+                 between: (startX + thumbOffset + offset - silderOffset, endX - thumbOffset - offset + silderOffset),
+                 color: trackColor)
         drawCircles(inContext: context, between: (startX, endX), color: anchorColor)
         drawLabels(labels, between: (startX, endX))
 
@@ -122,8 +153,10 @@ class Slider: UISlider {
     }
 
     private func circleCenter(anchor: CGFloat, between: (startX: CGFloat, endX: CGFloat)) -> CGPoint {
-        let pointX = anchor * frame.width
-        let x = max(between.startX + anchorRadius, min(pointX, between.endX - anchorRadius))
+        let thumbOffset = thumbStyle.thumbWidth / 2
+        let sliderOffset: CGFloat = 2
+        let pointX = (between.startX + thumbOffset - sliderOffset) + anchor * (frame.width - 2*thumbOffset)
+        let x = max(between.startX + thumbOffset - sliderOffset, min(pointX, between.endX - thumbOffset + sliderOffset))
         let y = frame.height / 2
 
         return CGPoint(x: x, y: y)
@@ -134,7 +167,11 @@ class Slider: UISlider {
                                between: (startX: CGFloat, endX: CGFloat)) -> CGPoint {
         let textAttributes = attributes(for: selection(for: anchor))
         let textWidth = (text as NSString).size(withAttributes: textAttributes).width
-        let pointX = frame.width * anchor
+
+        let thumbOffset = thumbStyle.thumbWidth / 2
+        let sliderOffset: CGFloat = 2
+
+        let pointX = (between.startX + thumbOffset - 2) + anchor * (frame.width - 2*thumbOffset)
         let minX = between.startX + horizontalOffset
         let maxX = min(pointX - textWidth / 2, between.endX - textWidth - horizontalOffset)
 
@@ -226,5 +263,13 @@ class Slider: UISlider {
     private let defaultLabelColor: UIColor = .red
     private let defaultHorizontalLabelOffset: CGFloat = 2
     private let defaultVerticalLabelOffset: CGFloat = 10
+
+}
+
+extension Decimal {
+
+    var cgFloat: CGFloat {
+        return CGFloat((self as NSDecimalNumber).doubleValue)
+    }
 
 }
