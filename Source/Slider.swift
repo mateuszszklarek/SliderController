@@ -1,34 +1,6 @@
-public class Slider: UISlider {
+class Slider: UISlider {
 
     // MARK: Interface
-
-    public enum ThumbStyle {
-        case system
-        case hidden
-        case custom(UIImage)
-
-        var thumbImage: UIImage? {
-            switch self {
-            case .system:
-                return nil
-            case .hidden:
-                return UIImage()
-            case .custom(let image):
-                return image
-            }
-        }
-
-        var thumbWidth: CGFloat {
-            switch self {
-            case .system:
-                return 31
-            case .hidden:
-                return 0
-            case .custom(let image):
-                return image.size.width
-            }
-        }
-    }
 
     var trackHeight: CGFloat = 10
     var selectedTrackColor: UIColor = .blue
@@ -69,7 +41,7 @@ public class Slider: UISlider {
 
     // MARK: Overridden
 
-    override public func draw(_ rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         super.draw(rect)
 
         let selectedTrackImage = drawImage(trackColor: selectedTrackColor, anchorColor: selectedAnchorColor)
@@ -98,15 +70,12 @@ public class Slider: UISlider {
             return nil
         }
 
-        let silderOffset: CGFloat = 2
-        let offset = trackHeight / 2
-        let thumbOffset = thumbStyle.thumbWidth / 2
+        let betweenStartX = startX + thumbOffset - sliderOffset
+        let betweenEndX = endX - thumbOffset + sliderOffset
 
-        drawLine(inContext: context,
-                 between: (startX + thumbOffset + offset - silderOffset, endX - thumbOffset - offset + silderOffset),
-                 color: trackColor)
-        drawCircles(inContext: context, between: (startX, endX), color: anchorColor)
-        drawLabels(labels, between: (startX, endX))
+        drawLine(inContext: context, between: (betweenStartX, betweenEndX), color: trackColor)
+        drawCircles(inContext: context, between: (betweenStartX, betweenEndX), color: anchorColor)
+        drawLabels(labels, between: (betweenStartX, betweenEndX))
 
         return UIGraphicsGetImageFromCurrentImageContext()?.resizableImage(withCapInsets: .zero)
     }
@@ -153,10 +122,8 @@ public class Slider: UISlider {
     }
 
     private func circleCenter(anchor: CGFloat, between: (startX: CGFloat, endX: CGFloat)) -> CGPoint {
-        let thumbOffset = thumbStyle.thumbWidth / 2
-        let sliderOffset: CGFloat = 2
-        let pointX = (between.startX + thumbOffset - sliderOffset) + anchor * (frame.width - 2*thumbOffset)
-        let x = max(between.startX + thumbOffset - sliderOffset, min(pointX, between.endX - thumbOffset + sliderOffset))
+        let pointX = between.startX + anchor * (frame.width - 2 * thumbOffset)
+        let x = max(between.startX, min(pointX, between.endX))
         let y = frame.height / 2
 
         return CGPoint(x: x, y: y)
@@ -168,12 +135,9 @@ public class Slider: UISlider {
         let textAttributes = attributes(for: selection(for: anchor))
         let textWidth = (text as NSString).size(withAttributes: textAttributes).width
 
-        let thumbOffset = thumbStyle.thumbWidth / 2
-        let sliderOffset: CGFloat = 2
-
-        let pointX = (between.startX + thumbOffset - 2) + anchor * (frame.width - 2*thumbOffset)
-        let minX = between.startX + horizontalOffset
-        let maxX = min(pointX - textWidth / 2, between.endX - textWidth - horizontalOffset)
+        let pointX = between.startX + anchor * (frame.width - 2 * thumbOffset)
+        let minX = between.startX + horizontalOffset - textWidth
+        let maxX = min(pointX - textWidth / 2, between.endX + textWidth - horizontalOffset)
 
         return CGPoint(x: max(minX, maxX), y: frame.height / 2 + anchorRadius + verticalOffset)
     }
@@ -214,6 +178,14 @@ public class Slider: UISlider {
 
     private func anchorsReferenceSystem(value: Decimal) -> Decimal {
         return value.normalizeToRange(newMax: 1, newMin: 0, oldMax: maxValueDecimal, oldMin: minValueDecimal)
+    }
+
+    private var thumbOffset: CGFloat {
+        return thumbStyle.thumbWidth / 2
+    }
+
+    private var sliderOffset: CGFloat {
+        return 2
     }
 
     private var horizontalOffset: CGFloat {
@@ -272,4 +244,32 @@ extension Decimal {
         return CGFloat((self as NSDecimalNumber).doubleValue)
     }
 
+}
+
+public enum ThumbStyle {
+    case system
+    case hidden
+    case custom(UIImage)
+
+    var thumbImage: UIImage? {
+        switch self {
+        case .system:
+            return nil
+        case .hidden:
+            return UIImage()
+        case .custom(let image):
+            return image
+        }
+    }
+
+    var thumbWidth: CGFloat {
+        switch self {
+        case .system:
+            return 31
+        case .hidden:
+            return 0
+        case .custom(let image):
+            return image.size.width
+        }
+    }
 }

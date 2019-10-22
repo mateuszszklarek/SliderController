@@ -33,7 +33,7 @@ public protocol SliderControlling: class {
     var unselectedLabelColor: UIColor? { get set }
     var horizontalLabelOffset: CGFloat? { get set }
     var verticalLabelOffset: CGFloat? { get set }
-    var thumbStyle: Slider.ThumbStyle { get set }
+    var thumbStyle: ThumbStyle { get set }
 }
 
 public class SliderController: UIViewController, SliderControlling {
@@ -207,7 +207,7 @@ public class SliderController: UIViewController, SliderControlling {
         get { return slider.verticalLabelOffset }
     }
 
-    public var thumbStyle: Slider.ThumbStyle {
+    public var thumbStyle: ThumbStyle {
         set {
             slider.thumbStyle = newValue
             slider.setNeedsDisplay()
