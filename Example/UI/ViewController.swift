@@ -12,20 +12,29 @@ class ViewController: UIViewController, SliderControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        sliderController.unselectedTrackColor = UIColor.red.withAlphaComponent(0.5)
-        sliderController.selectedTrackColor = .green
-        sliderController.unselectedAnchorColor = .red
-        sliderController.selectedAnchorColor = .green
-        sliderController.isThumbHidden = true
-        sliderController.anchors = [0, 0.3, 0.6, 1.0]
-        sliderController.anchorRadius = 15
-        sliderController.trackHeight = 7.5
-        sliderController.labels = ["A", "B", "C", "D"]
-        sliderController.horizontalLabelOffset = 0
-        sliderController.verticalLabelOffset = 0
-        sliderController.labelFont = UIFont.boldSystemFont(ofSize: 10)
-        sliderController.labelColor = UIColor.black
-        sliderController.delegate = self
+        view.backgroundColor = .darkGray
+
+        sliderController.unselectedTrackColor = UIColor(red: 0.13, green: 0.20, blue: 0.30, alpha: 1.0)
+        sliderController.selectedTrackColor = UIColor(red: 0.33, green: 0.11, blue: 0.73, alpha: 1.0)
+        sliderController.unselectedAnchorColor = UIColor(red: 0.13, green: 0.20, blue: 0.30, alpha: 1.0)
+        sliderController.selectedAnchorColor = UIColor(red: 0.33, green: 0.11, blue: 0.73, alpha: 1.0)
+        sliderController.thumbStyle = .custom(#imageLiteral(resourceName: "slider_thumb"))
+        sliderController.anchors = [0, 0.2, 0.4, 0.6, 0.8, 1.0]
+        sliderController.anchorRadius = 4
+        sliderController.trackHeight = 4
+        sliderController.labels = ["0.0", "0.2", "0.4", "0.6", "0.8", "1.0"]
+        sliderController.verticalLabelOffset = 15
+        sliderController.minimumValue = 0
+        sliderController.maximumValue = 1
+
+        sliderController.selectedLabelColor = .white
+        sliderController.selectedLabelFont = UIFont.default(size: 14, weight: .regular)
+        sliderController.unselectedLabelColor = UIColor(red: 0.69, green: 0.66, blue: 0.73, alpha: 1.0)
+        sliderController.unselectedLabelFont = UIFont.default(size: 14, weight: .regular)
+        sliderController.currentValueLabelColor = .white
+        sliderController.currentValueLabelFont = UIFont.default(size: 14, weight: .bold)
+
+        sliderController.isStepSlider = true
     }
 
     let sliderController: SliderControlling = SliderController()
@@ -48,6 +57,10 @@ class ViewController: UIViewController, SliderControllerDelegate {
         print("Slider did end swiping") // TODO: Implement UI
     }
 
+    func sliderLabelForValue(label: String?) {
+        print("Slider label for value: \(label ?? "none")")
+    }
+
 }
 
 extension UIViewController {
@@ -57,10 +70,37 @@ extension UIViewController {
         targetView.addSubview(child.view)
         child.view.translatesAutoresizingMaskIntoConstraints = false
         child.view.topAnchor.constraint(equalTo: targetView.topAnchor).isActive = true
-        child.view.leftAnchor.constraint(equalTo: targetView.leftAnchor).isActive = true
-        child.view.rightAnchor.constraint(equalTo: targetView.rightAnchor).isActive = true
+        child.view.leftAnchor.constraint(equalTo: targetView.leftAnchor, constant: 10).isActive = true
+        child.view.rightAnchor.constraint(equalTo: targetView.rightAnchor, constant: -10).isActive = true
         child.view.bottomAnchor.constraint(equalTo: targetView.bottomAnchor).isActive = true
         child.didMove(toParent: self)
+    }
+
+}
+
+extension UIFont {
+
+    public static func `default`(size: CGFloat, weight: Weight) -> UIFont {
+        return UIFont(name: name(for: weight), size: size)!
+    }
+
+}
+
+private extension UIFont {
+
+    static func name(for weight: UIFont.Weight) -> String {
+        switch weight {
+        case .regular:
+            return "AvenirNext-Regular"
+        case .bold:
+            return "AvenirNext-Bold"
+        case .semibold:
+            return "AvenirNext-DemiBold"
+        case .medium:
+            return "AvenirNext-Medium"
+        default:
+            fatalError("Unable to find app default font with weight \(weight)")
+        }
     }
 
 }
