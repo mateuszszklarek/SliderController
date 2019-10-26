@@ -1,7 +1,7 @@
 extension Decimal {
 
     var float: Float {
-        return (self as NSDecimalNumber).floatValue
+        (self as NSDecimalNumber).floatValue
     }
 
 }

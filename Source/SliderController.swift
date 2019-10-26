@@ -59,17 +59,17 @@ public class SliderController: UIViewController, SliderControlling {
     }
 
     public var sliderValue: Float {
-        return slider.value
+        slider.value
     }
 
     public var minimumValue: Float {
         set { slider.minimumValue = newValue }
-        get { return slider.minimumValue }
+        get { slider.minimumValue }
     }
 
     public var maximumValue: Float {
         set { slider.maximumValue = newValue }
-        get { return slider.maximumValue }
+        get { slider.maximumValue }
     }
 
     public var isStepSlider = false {
@@ -83,7 +83,7 @@ public class SliderController: UIViewController, SliderControlling {
             slider.trackHeight = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.trackHeight }
+        get { slider.trackHeight }
     }
 
     public var selectedTrackColor: UIColor {
@@ -91,7 +91,7 @@ public class SliderController: UIViewController, SliderControlling {
             slider.selectedTrackColor = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.selectedTrackColor }
+        get { slider.selectedTrackColor }
     }
 
     public var unselectedTrackColor: UIColor {
@@ -99,7 +99,7 @@ public class SliderController: UIViewController, SliderControlling {
             slider.unselectedTrackColor = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.unselectedTrackColor }
+        get { slider.unselectedTrackColor }
     }
 
     public var anchors: [CGFloat] {
@@ -107,7 +107,7 @@ public class SliderController: UIViewController, SliderControlling {
             slider.anchors = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.anchors }
+        get { slider.anchors }
     }
 
     public var anchorRadius: CGFloat {
@@ -115,7 +115,7 @@ public class SliderController: UIViewController, SliderControlling {
             slider.anchorRadius = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.anchorRadius }
+        get { slider.anchorRadius }
     }
 
     public var selectedAnchorColor: UIColor {
@@ -123,7 +123,7 @@ public class SliderController: UIViewController, SliderControlling {
             slider.selectedAnchorColor = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.selectedAnchorColor }
+        get { slider.selectedAnchorColor }
     }
 
     public var unselectedAnchorColor: UIColor {
@@ -131,7 +131,7 @@ public class SliderController: UIViewController, SliderControlling {
             slider.unselectedAnchorColor = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.unselectedAnchorColor }
+        get { slider.unselectedAnchorColor }
     }
 
     public var labels: [String] {
@@ -139,7 +139,7 @@ public class SliderController: UIViewController, SliderControlling {
             slider.labels = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.labels }
+        get { slider.labels }
     }
 
     public var selectedLabelFont: UIFont? {
@@ -195,7 +195,7 @@ public class SliderController: UIViewController, SliderControlling {
             slider.horizontalLabelOffset = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.horizontalLabelOffset }
+        get { slider.horizontalLabelOffset }
     }
 
     public var verticalLabelOffset: CGFloat? {
@@ -203,7 +203,7 @@ public class SliderController: UIViewController, SliderControlling {
             slider.verticalLabelOffset = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.verticalLabelOffset }
+        get { slider.verticalLabelOffset }
     }
 
     public var thumbStyle: ThumbStyle {
@@ -211,7 +211,7 @@ public class SliderController: UIViewController, SliderControlling {
             slider.thumbStyle = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.thumbStyle }
+        get { slider.thumbStyle }
     }
 
     // MARK: - Interactions

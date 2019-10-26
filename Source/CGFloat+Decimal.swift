@@ -1,7 +1,7 @@
 extension CGFloat {
 
     var decimal: Decimal {
-        return Decimal(Double(self))
+        Decimal(Double(self))
     }
 
 }
