@@ -246,7 +246,7 @@ extension Decimal {
 
 }
 
-public enum ThumbStyle {
+public enum ThumbStyle: Equatable {
     case system
     case hidden
     case custom(UIImage)
