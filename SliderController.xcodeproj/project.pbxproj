@@ -13,6 +13,9 @@
 		473486A7235B2268004C8EE3 /* Array+Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473486A6235B2268004C8EE3 /* Array+Decimal.swift */; };
 		473486A9235B227C004C8EE3 /* Sequence+Nearest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473486A8235B227C004C8EE3 /* Sequence+Nearest.swift */; };
 		473486AC235B22D2004C8EE3 /* Decimal+NormalizeToRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473486AB235B22D2004C8EE3 /* Decimal+NormalizeToRange.swift */; };
+		4741E2622364F427000A58C4 /* UIViewController+Embeding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4741E2612364F427000A58C4 /* UIViewController+Embeding.swift */; };
+		4741E2642364F442000A58C4 /* NonThumbSliderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4741E2632364F442000A58C4 /* NonThumbSliderController.swift */; };
+		4741E2662364F476000A58C4 /* CustomStepSliderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4741E2652364F476000A58C4 /* CustomStepSliderController.swift */; };
 		4E3967341F2E54AB00FA3B40 /* SliderController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E3967321F2E54AB00FA3B40 /* SliderController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4E39675A1F2E57E800FA3B40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3967591F2E57E800FA3B40 /* AppDelegate.swift */; };
 		4E39675C1F2E57E800FA3B40 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E39675B1F2E57E800FA3B40 /* ViewController.swift */; };
@@ -68,6 +71,9 @@
 		473486A6235B2268004C8EE3 /* Array+Decimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Decimal.swift"; sourceTree = "<group>"; };
 		473486A8235B227C004C8EE3 /* Sequence+Nearest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Nearest.swift"; sourceTree = "<group>"; };
 		473486AB235B22D2004C8EE3 /* Decimal+NormalizeToRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+NormalizeToRange.swift"; sourceTree = "<group>"; };
+		4741E2612364F427000A58C4 /* UIViewController+Embeding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Embeding.swift"; sourceTree = "<group>"; };
+		4741E2632364F442000A58C4 /* NonThumbSliderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonThumbSliderController.swift; sourceTree = "<group>"; };
+		4741E2652364F476000A58C4 /* CustomStepSliderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStepSliderController.swift; sourceTree = "<group>"; };
 		4E3967311F2E54AB00FA3B40 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E3967321F2E54AB00FA3B40 /* SliderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderController.h; sourceTree = "<group>"; };
 		4E3967351F2E54D200FA3B40 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -160,6 +166,9 @@
 			children = (
 				4E3967621F2E57E800FA3B40 /* LaunchScreen.storyboard */,
 				4E39675B1F2E57E800FA3B40 /* ViewController.swift */,
+				4741E2612364F427000A58C4 /* UIViewController+Embeding.swift */,
+				4741E2632364F442000A58C4 /* NonThumbSliderController.swift */,
+				4741E2652364F476000A58C4 /* CustomStepSliderController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -421,8 +430,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4741E2662364F476000A58C4 /* CustomStepSliderController.swift in Sources */,
 				4E39675C1F2E57E800FA3B40 /* ViewController.swift in Sources */,
+				4741E2622364F427000A58C4 /* UIViewController+Embeding.swift in Sources */,
 				4E39675A1F2E57E800FA3B40 /* AppDelegate.swift in Sources */,
+				4741E2642364F442000A58C4 /* NonThumbSliderController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

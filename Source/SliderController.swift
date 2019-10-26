@@ -274,11 +274,10 @@ public class SliderController: UIViewController, SliderControlling {
 
     private func setUpLayout() {
         slider.translatesAutoresizingMaskIntoConstraints = false
-//        slider.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        slider.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         slider.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         slider.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        slider.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//        slider.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        slider.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
 }
