@@ -72,7 +72,11 @@ public class SliderController: UIViewController, SliderControlling {
         get { return slider.maximumValue }
     }
 
-    public var isStepSlider = false
+    public var isStepSlider = false {
+        didSet {
+            slider.setNeedsDisplay()
+        }
+    }
 
     public var trackHeight: CGFloat {
         set {

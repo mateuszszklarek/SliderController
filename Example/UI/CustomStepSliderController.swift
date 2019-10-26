@@ -58,6 +58,7 @@ class CustomStepSliderController: UIViewController, SliderControllerDelegate {
         slider.currentValueLabelColor = .gray
         slider.currentValueLabelFont = UIFont.systemFont(ofSize: 14, weight: .bold)
         slider.isStepSlider = true
+        slider.delegate = self
         return slider
     }()
 

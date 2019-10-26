@@ -35,7 +35,7 @@ class Slider: UISlider {
     }
 
     func targetValue(tappedPoint: CGPoint) -> Float {
-        let unitWidth = maxValueDecimal / frame.size.width.decimal
+        let unitWidth = maximumValue.decimal / frame.size.width.decimal
         return ((tappedPoint.x.decimal - frame.origin.x.decimal) * unitWidth).float
     }
 
@@ -70,12 +70,9 @@ class Slider: UISlider {
             return nil
         }
 
-        let betweenStartX = startX + thumbOffset - sliderOffset
-        let betweenEndX = endX - thumbOffset + sliderOffset
-
-        drawLine(inContext: context, between: (betweenStartX, betweenEndX), color: trackColor)
-        drawCircles(inContext: context, between: (betweenStartX, betweenEndX), color: anchorColor)
-        drawLabels(labels, between: (betweenStartX, betweenEndX))
+        drawLine(inContext: context, between: (startX, endX), color: trackColor)
+        drawCircles(inContext: context, between: (startX, endX), color: anchorColor)
+        drawLabels(labels, between: (startX, endX))
 
         return UIGraphicsGetImageFromCurrentImageContext()?.resizableImage(withCapInsets: .zero)
     }
@@ -83,8 +80,8 @@ class Slider: UISlider {
     private func drawLine(inContext context: CGContext,
                           between: (startX: CGFloat, endX: CGFloat),
                           color: UIColor) {
-        let startLinePoint = CGPoint(x: between.startX, y: frame.height / 2)
-        let endLinePoint = CGPoint(x: between.endX, y: frame.height / 2)
+        let startLinePoint = CGPoint(x: between.startX + startXLineOffset, y: frame.height / 2)
+        let endLinePoint = CGPoint(x: between.endX - endXLineOffset, y: frame.height / 2)
 
         context.addLines(between: [startLinePoint, endLinePoint])
         context.setLineWidth(trackHeight)
@@ -122,8 +119,8 @@ class Slider: UISlider {
     }
 
     private func circleCenter(anchor: CGFloat, between: (startX: CGFloat, endX: CGFloat)) -> CGPoint {
-        let pointX = between.startX + anchor * (frame.width - 2 * thumbOffset)
-        let x = max(between.startX, min(pointX, between.endX))
+        let pointX = between.startX + anchor * sliderWidth
+        let x = max(between.startX + circleOffset, min(pointX + circleOffset, between.endX - circleOffset))
         let y = frame.height / 2
 
         return CGPoint(x: x, y: y)
@@ -135,14 +132,16 @@ class Slider: UISlider {
         let textAttributes = attributes(for: selection(for: anchor))
         let textWidth = (text as NSString).size(withAttributes: textAttributes).width
 
-        let pointX = between.startX + anchor * (frame.width - 2 * thumbOffset)
-        let minX = between.startX + horizontalOffset - textWidth
-        let maxX = min(pointX - textWidth / 2, between.endX + textWidth - horizontalOffset)
+        let pointX = labelOffset + sliderWidth * anchor
+        let minX = between.startX + horizontalOffset
+        let maxX = min(pointX - textWidth / 2, between.endX - textWidth - horizontalOffset)
 
         return CGPoint(x: max(minX, maxX), y: frame.height / 2 + anchorRadius + verticalOffset)
     }
 
-    enum SelectionType {
+    // MARK: - Helpers
+
+    private enum SelectionType {
         case unselcted
         case currentValue
         case selected
@@ -150,8 +149,8 @@ class Slider: UISlider {
 
     private func selection(for anchor: CGFloat) -> SelectionType {
         let newValue = anchor.decimal
-            .normalizeToRange(newMax: maxValueDecimal, newMin: minValueDecimal, oldMax: 1, oldMin: 0)
-        switch (newValue.float, valueDecimal.float) {
+            .normalizeToRange(newMax: maximumValue.decimal, newMin: minimumValue.decimal, oldMax: 1, oldMin: 0)
+        switch (newValue.float, value) {
         case let (x, y) where x == y:
             return .currentValue
         case let (x, y) where x > y:
@@ -173,60 +172,93 @@ class Slider: UISlider {
     }
 
     private func sliderReferenceSystem(value: Decimal) -> Decimal {
-        return value.normalizeToRange(newMax: maxValueDecimal, newMin: minValueDecimal, oldMax: 1, oldMin: 0)
+        value.normalizeToRange(newMax: maximumValue.decimal, newMin: minimumValue.decimal, oldMax: 1, oldMin: 0)
     }
 
     private func anchorsReferenceSystem(value: Decimal) -> Decimal {
-        return value.normalizeToRange(newMax: 1, newMin: 0, oldMax: maxValueDecimal, oldMin: minValueDecimal)
+        value.normalizeToRange(newMax: 1, newMin: 0, oldMax: maximumValue.decimal, oldMin: minimumValue.decimal)
     }
 
     private var thumbOffset: CGFloat {
-        return thumbStyle.thumbWidth / 2
+        thumbStyle.thumbWidth / 2
     }
 
     private var sliderOffset: CGFloat {
-        return 2
+        2
     }
 
     private var horizontalOffset: CGFloat {
-        return horizontalLabelOffset ?? defaultHorizontalLabelOffset
+        horizontalLabelOffset ?? defaultHorizontalLabelOffset
     }
 
     private var verticalOffset: CGFloat {
-        return verticalLabelOffset ?? defaultVerticalLabelOffset
+        verticalLabelOffset ?? defaultVerticalLabelOffset
     }
 
     private var selectedTextAttributes: [NSAttributedString.Key: Any] {
-        return [
+        [
             NSAttributedString.Key.font: selectedLabelFont ?? defaultLabelFont,
             NSAttributedString.Key.foregroundColor: selectedLabelColor ?? defaultLabelColor
         ]
     }
 
     private var unselectedTextAttributes: [NSAttributedString.Key: Any] {
-        return [
+        [
             NSAttributedString.Key.font: unselectedLabelFont ?? defaultLabelFont,
             NSAttributedString.Key.foregroundColor: unselectedLabelColor ?? defaultLabelColor
         ]
     }
 
     private var currentValueTextAttributes: [NSAttributedString.Key: Any] {
-        return [
+        [
             NSAttributedString.Key.font: currentValueLabelFont ?? defaultLabelFont,
             NSAttributedString.Key.foregroundColor: currentValueLabelColor ?? defaultLabelColor
         ]
     }
 
-    private var minValueDecimal: Decimal {
-        return minimumValue.decimal
+    private var labelOffset: CGFloat {
+        switch thumbStyle {
+        case .custom, .system:
+            return thumbOffset - sliderOffset
+        case .hidden:
+            return anchorRadius
+        }
     }
 
-    private var maxValueDecimal: Decimal {
-        return maximumValue.decimal
+    private var startXLineOffset: CGFloat {
+        switch thumbStyle {
+        case .custom, .system:
+            return thumbOffset - sliderOffset + (trackHeight / 2)
+        case .hidden:
+            return trackHeight / 2
+        }
     }
 
-    private var valueDecimal: Decimal {
-        return value.decimal
+    private var endXLineOffset: CGFloat {
+        switch thumbStyle {
+        case .custom, .system:
+            return thumbOffset + sliderOffset - (trackHeight / 2)
+        case .hidden:
+            return trackHeight / 2
+        }
+    }
+
+    private var sliderWidth: CGFloat {
+        switch thumbStyle {
+        case .custom, .system:
+            return frame.width - 2 * thumbOffset
+        case .hidden:
+            return frame.width
+        }
+    }
+
+    private var circleOffset: CGFloat {
+        switch thumbStyle {
+        case .custom, .system:
+            return thumbOffset - sliderOffset
+        case .hidden:
+            return anchorRadius
+        }
     }
 
     // MARK: - Default values
@@ -235,14 +267,6 @@ class Slider: UISlider {
     private let defaultLabelColor: UIColor = .red
     private let defaultHorizontalLabelOffset: CGFloat = 2
     private let defaultVerticalLabelOffset: CGFloat = 10
-
-}
-
-extension Decimal {
-
-    var cgFloat: CGFloat {
-        return CGFloat((self as NSDecimalNumber).doubleValue)
-    }
 
 }
 
