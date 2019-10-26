@@ -6,7 +6,7 @@ class ViewController: UIViewController, SliderControllerDelegate {
     override func loadView() {
         view = UIView(frame: .zero)
         view.backgroundColor = .white
-        embed(child: sliderController.controller, in: view)
+        embed(child: sliderController, in: view)
     }
 
     override func viewDidLoad() {

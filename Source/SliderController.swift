@@ -6,14 +6,13 @@ public protocol SliderControllerDelegate: class {
     func sliderLabelForValue(label: String?)
 }
 
-public protocol SliderControlling: class {
+public protocol SliderControlling: UIViewController {
     var delegate: SliderControllerDelegate? { get set }
     func setSlider(value: Float, animated: Bool)
     var sliderValue: Float { get }
     var minimumValue: Float { get set }
     var maximumValue: Float { get set }
     var isStepSlider: Bool { get set }
-    var controller: UIViewController { get }
 
     var trackHeight: CGFloat { get set }
     var selectedTrackColor: UIColor { get set }
@@ -74,10 +73,6 @@ public class SliderController: UIViewController, SliderControlling {
     }
 
     public var isStepSlider = false
-
-    public var controller: UIViewController {
-        return self
-    }
 
     public var trackHeight: CGFloat {
         set {
@@ -279,10 +274,11 @@ public class SliderController: UIViewController, SliderControlling {
 
     private func setUpLayout() {
         slider.translatesAutoresizingMaskIntoConstraints = false
-        slider.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//        slider.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         slider.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         slider.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        slider.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        slider.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//        slider.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
 }
