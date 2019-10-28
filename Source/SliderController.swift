@@ -56,6 +56,7 @@ public class SliderController: UIViewController, SliderControlling {
 
     public func setSlider(value: Float, animated: Bool) {
         slider.setValue(value, animated: animated)
+        slider.sendActions(for: .valueChanged)
     }
 
     public var sliderValue: Float {
