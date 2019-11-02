@@ -237,8 +237,10 @@ public class SliderController: UIViewController, SliderControlling {
         if isStepSlider, let roundedValue = slider.roundToNearestAnchor(value: targetValue) {
             slider.setValue(roundedValue.float, animated: true)
             delegate?.sliderLabelForValue(label: slider.labelForSliderValue(value: roundedValue))
+            delegate?.sliderValueDidChange(value: roundedValue.float)
         } else {
             slider.setValue(targetValue, animated: true)
+            delegate?.sliderValueDidChange(value: targetValue)
         }
 
         slider.setNeedsDisplay()
