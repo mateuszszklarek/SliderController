@@ -3,15 +3,16 @@ public protocol SliderControllerDelegate: class {
     func sliderValueDidChange(value: Float)
     func sliderDidStartSwiping()
     func sliderDidEndSwiping()
+    func sliderLabelForValue(label: String?)
 }
 
-public protocol SliderControlling: class {
-    weak var delegate: SliderControllerDelegate? { get set }
+public protocol SliderControlling: UIViewController {
+    var delegate: SliderControllerDelegate? { get set }
     func setSlider(value: Float, animated: Bool)
     var sliderValue: Float { get }
     var minimumValue: Float { get set }
     var maximumValue: Float { get set }
-    var controller: UIViewController { get }
+    var isStepSlider: Bool { get set }
 
     var trackHeight: CGFloat { get set }
     var selectedTrackColor: UIColor { get set }
@@ -21,16 +22,20 @@ public protocol SliderControlling: class {
     var anchorRadius: CGFloat { get set }
     var selectedAnchorColor: UIColor { get set }
     var unselectedAnchorColor: UIColor { get set }
+    var currentValueLabelFont: UIFont? { get set }
+    var currentValueLabelColor: UIColor? { get set }
 
     var labels: [String] { get set }
-    var labelFont: UIFont? { get set }
-    var labelColor: UIColor? { get set }
+    var selectedLabelFont: UIFont? { get set }
+    var unselectedLabelFont: UIFont? { get set }
+    var selectedLabelColor: UIColor? { get set }
+    var unselectedLabelColor: UIColor? { get set }
     var horizontalLabelOffset: CGFloat? { get set }
     var verticalLabelOffset: CGFloat? { get set }
-    var isThumbHidden: Bool { get set }
+    var thumbStyle: ThumbStyle { get set }
 }
 
-final public class SliderController: UIViewController, SliderControlling {
+public class SliderController: UIViewController, SliderControlling {
 
     public override func loadView() {
         view = UIView(frame: .zero)
@@ -51,24 +56,27 @@ final public class SliderController: UIViewController, SliderControlling {
 
     public func setSlider(value: Float, animated: Bool) {
         slider.setValue(value, animated: animated)
+        slider.sendActions(for: .valueChanged)
     }
 
     public var sliderValue: Float {
-        return slider.value
+        slider.value
     }
 
     public var minimumValue: Float {
         set { slider.minimumValue = newValue }
-        get { return slider.minimumValue }
+        get { slider.minimumValue }
     }
 
     public var maximumValue: Float {
         set { slider.maximumValue = newValue }
-        get { return slider.maximumValue }
+        get { slider.maximumValue }
     }
 
-    public var controller: UIViewController {
-        return self
+    public var isStepSlider = false {
+        didSet {
+            slider.setNeedsDisplay()
+        }
     }
 
     public var trackHeight: CGFloat {
@@ -76,7 +84,7 @@ final public class SliderController: UIViewController, SliderControlling {
             slider.trackHeight = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.trackHeight }
+        get { slider.trackHeight }
     }
 
     public var selectedTrackColor: UIColor {
@@ -84,7 +92,7 @@ final public class SliderController: UIViewController, SliderControlling {
             slider.selectedTrackColor = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.selectedTrackColor }
+        get { slider.selectedTrackColor }
     }
 
     public var unselectedTrackColor: UIColor {
@@ -92,7 +100,7 @@ final public class SliderController: UIViewController, SliderControlling {
             slider.unselectedTrackColor = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.unselectedTrackColor }
+        get { slider.unselectedTrackColor }
     }
 
     public var anchors: [CGFloat] {
@@ -100,7 +108,7 @@ final public class SliderController: UIViewController, SliderControlling {
             slider.anchors = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.anchors }
+        get { slider.anchors }
     }
 
     public var anchorRadius: CGFloat {
@@ -108,7 +116,7 @@ final public class SliderController: UIViewController, SliderControlling {
             slider.anchorRadius = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.anchorRadius }
+        get { slider.anchorRadius }
     }
 
     public var selectedAnchorColor: UIColor {
@@ -116,7 +124,7 @@ final public class SliderController: UIViewController, SliderControlling {
             slider.selectedAnchorColor = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.selectedAnchorColor }
+        get { slider.selectedAnchorColor }
     }
 
     public var unselectedAnchorColor: UIColor {
@@ -124,7 +132,7 @@ final public class SliderController: UIViewController, SliderControlling {
             slider.unselectedAnchorColor = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.unselectedAnchorColor }
+        get { slider.unselectedAnchorColor }
     }
 
     public var labels: [String] {
@@ -132,23 +140,55 @@ final public class SliderController: UIViewController, SliderControlling {
             slider.labels = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.labels }
+        get { slider.labels }
     }
 
-    public var labelFont: UIFont? {
+    public var selectedLabelFont: UIFont? {
         set {
-            slider.labelFont = newValue
+            slider.selectedLabelFont = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.labelFont }
+        get { slider.selectedLabelFont }
     }
 
-    public var labelColor: UIColor? {
+    public var unselectedLabelFont: UIFont? {
         set {
-            slider.labelColor = newValue
+            slider.unselectedLabelFont = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.labelColor }
+        get { slider.unselectedLabelFont }
+    }
+
+    public var selectedLabelColor: UIColor? {
+        set {
+            slider.selectedLabelColor = newValue
+            slider.setNeedsDisplay()
+        }
+        get { slider.selectedLabelColor }
+    }
+
+    public var unselectedLabelColor: UIColor? {
+        set {
+            slider.unselectedLabelColor = newValue
+            slider.setNeedsDisplay()
+        }
+        get { slider.unselectedLabelColor }
+    }
+
+    public var currentValueLabelFont: UIFont? {
+        set {
+            slider.currentValueLabelFont = newValue
+            slider.setNeedsDisplay()
+        }
+        get { slider.currentValueLabelFont }
+    }
+
+    public var currentValueLabelColor: UIColor? {
+        set {
+            slider.currentValueLabelColor = newValue
+            slider.setNeedsDisplay()
+        }
+        get { slider.currentValueLabelColor }
     }
 
     public var horizontalLabelOffset: CGFloat? {
@@ -156,7 +196,7 @@ final public class SliderController: UIViewController, SliderControlling {
             slider.horizontalLabelOffset = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.horizontalLabelOffset }
+        get { slider.horizontalLabelOffset }
     }
 
     public var verticalLabelOffset: CGFloat? {
@@ -164,15 +204,15 @@ final public class SliderController: UIViewController, SliderControlling {
             slider.verticalLabelOffset = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.verticalLabelOffset }
+        get { slider.verticalLabelOffset }
     }
 
-    public var isThumbHidden: Bool {
+    public var thumbStyle: ThumbStyle {
         set {
-            slider.isThumbHidden = newValue
+            slider.thumbStyle = newValue
             slider.setNeedsDisplay()
         }
-        get { return slider.isThumbHidden }
+        get { slider.thumbStyle }
     }
 
     // MARK: - Interactions
@@ -190,16 +230,34 @@ final public class SliderController: UIViewController, SliderControlling {
     private func didTapSlider(gestureRecognizer: UITapGestureRecognizer) {
         let tappedPoint = gestureRecognizer.location(in: slider)
 
-        let unitWidth = slider.maximumValue / Float(slider.frame.size.width)
-        let targetValue = Float(tappedPoint.x - slider.frame.origin.x) * unitWidth
+        let targetValue = slider.targetValue(tappedPoint: tappedPoint)
 
-        slider.setValue(targetValue, animated: true)
         delegate?.sliderDidTap(atValue: targetValue)
+
+        if isStepSlider, let roundedValue = slider.roundToNearestAnchor(value: targetValue) {
+            slider.setValue(roundedValue.float, animated: true)
+            delegate?.sliderLabelForValue(label: slider.labelForSliderValue(value: roundedValue))
+            delegate?.sliderValueDidChange(value: roundedValue.float)
+        } else {
+            slider.setValue(targetValue, animated: true)
+            delegate?.sliderValueDidChange(value: targetValue)
+        }
+
+        slider.setNeedsDisplay()
     }
 
     @objc
     private func sliderValueDidChange(sender: UISlider) {
-        delegate?.sliderValueDidChange(value: sender.value)
+        var value = sender.value
+
+        if isStepSlider, let roundedValue = slider.roundToNearestAnchor(value: sender.value) {
+            delegate?.sliderLabelForValue(label: slider.labelForSliderValue(value: roundedValue))
+            value = roundedValue.float
+        }
+
+        slider.setNeedsDisplay()
+        slider.setValue(value, animated: false)
+        delegate?.sliderValueDidChange(value: value)
     }
 
     @objc

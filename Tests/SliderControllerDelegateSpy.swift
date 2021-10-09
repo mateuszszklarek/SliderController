@@ -23,8 +23,11 @@ class SliderControllerDelegateSpy: SliderControllerDelegate {
         sliderDidEndSwipingCall = true
     }
 
-}
+    func sliderLabelForValue(label: String?) {
 
+    }
+
+}
 
 extension Float {
 
