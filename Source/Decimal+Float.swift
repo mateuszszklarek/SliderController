@@ -1,3 +1,5 @@
+import Foundation
+
 extension Decimal {
 
     var float: Float {

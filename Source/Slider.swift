@@ -1,3 +1,5 @@
+import UIKit
+
 class Slider: UISlider {
 
     // MARK: Interface

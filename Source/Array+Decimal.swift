@@ -1,3 +1,5 @@
+import Foundation
+
 extension Array where Element == CGFloat {
 
     var decimal: [Decimal] {

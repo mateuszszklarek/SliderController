@@ -1,4 +1,6 @@
-public protocol SliderControllerDelegate: class {
+import UIKit
+
+public protocol SliderControllerDelegate: AnyObject {
     func sliderDidTap(atValue value: Float)
     func sliderValueDidChange(value: Float)
     func sliderDidStartSwiping()

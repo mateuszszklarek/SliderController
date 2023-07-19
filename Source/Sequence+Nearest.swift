@@ -1,3 +1,5 @@
+import Foundation
+
 extension Sequence where Iterator.Element == Decimal {
 
     func nearest(value: Decimal) -> Element? {
